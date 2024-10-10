@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:text="Dirección de email"
         android:textSize="14dp"
         android:textColor="@android:color/darker_gray"
