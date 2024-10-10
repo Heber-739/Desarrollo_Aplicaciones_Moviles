@@ -5,4 +5,8 @@
     <color name="grey_button">#E7EAEE</color>
     <color name="lines">#D0D5DD</color>
     <color name="exit">#F7F8F9</color>
+    <color name="like_background">#E8E9F1</color>
+    <color name="background_layout_like">#F8F9FE</color>
+    <color name="background_navbar">#FEF7FF</color>
+
 </resources>
