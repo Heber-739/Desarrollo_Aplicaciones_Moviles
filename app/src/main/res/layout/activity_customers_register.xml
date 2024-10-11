@@ -237,18 +237,19 @@
 
     </LinearLayout>
 
-       <FrameLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:background="@color/background_navbar"
             android:backgroundTint="@color/background_navbar"
             android:orientation="horizontal"
             android:paddingTop="14dp"
-            android:paddingBottom="14dp"
-            android:layout_gravity="bottom">
+            android:paddingBottom="14dp">
 
             <Button
                 android:id="@+id/btn_nav_home"
@@ -368,8 +369,6 @@
 
         </LinearLayout>
     </FrameLayout>
-
-
 
 
 </LinearLayout>
