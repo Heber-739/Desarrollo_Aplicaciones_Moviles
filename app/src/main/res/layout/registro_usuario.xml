@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/txtRegistroUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Registro de usuario"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txtCreauna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif"
+        android:text="Creá una cuenta para comenzar"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/txtClienteNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Nombre"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/editClienteNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/txtClienteEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Dirección de email"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/editClienteEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="nombre@dominio.com"
+        android:inputType="text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/txtClientePass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Contraseña"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/editClientePass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editClientePass2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="Confirma tu Contraseña"
+        android:inputType="textPassword"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <CheckBox
+            android:id="@+id/chkUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:Color="@android:color/darker_gray"
+            android:buttonTint="@android:color/darker_gray"
+            android:minHeight="16dp" />
+
+        <TextView
+            android:id="@+id/txtTerminos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Ya leí y acepto los  "
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/txtTerminosLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Términos y Condiciones"
+            android:textColor="#006ffd"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/txtPoliticas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text=" y las "
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtPoliticasLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Políticas de Privacidad"
+        android:textColor="#006ffd"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/btnRegistroUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#006ffd"
+        android:text="Registrar Usuario"
+        app:cornerRadius="12dp" />
+
+
+    // INICIO DEL CODIGO DE LA BOTONERA
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+
+
+        <LinearLayout
+            android:id="@+id/linLayHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnHome"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/home" />
+
+            <TextView
+                android:id="@+id/txtBtnHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Home"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linLayAnadir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnAnadir"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/anadir" />
+
+            <TextView
+                android:id="@+id/txtAnadir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Añadir"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linLayPago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnPago"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/pago" />
+
+            <TextView
+                android:id="@+id/txtPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Pago"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linLayCarnet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnCarnet"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/carnet" />
+
+            <TextView
+                android:id="@+id/txtCarnet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Carnet"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linLayReportes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btnReportes"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:backgroundTint="@color/white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/reporte" />
+
+            <TextView
+                android:id="@+id/txtReportes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Reportes"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    // FIN DEL CODIGO DE LA BOTONERA
+
+</LinearLayout>
