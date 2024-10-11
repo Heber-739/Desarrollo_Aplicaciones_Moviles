@@ -6,26 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:backgroundTint="@color/white"
     android:gravity="center_horizontal"
 
     android:orientation="vertical"
+
     android:padding="30dp"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgLogo"
         android:layout_width="323dp"
         android:layout_height="260dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/happiness_fit_club"
         tools:layout_editor_absoluteX="59dp"
         tools:layout_editor_absoluteY="2dp" />
 
     <View
         android:layout_width="wrap_content"
-        android:layout_height="50dp" />
+        android:layout_height="150dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtBienvenido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -35,27 +38,30 @@
         android:textSize="24dp" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/editLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:ems="10"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:text="Dirección de email"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:textColor="@android:color/darker_gray"
+        android:background="@drawable/borde_redondo" />
+
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editLoginPass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:ems="10"
+        android:background="@drawable/borde_redondo"
         android:inputType="textPassword"
         android:text="Contraseña"
-        app:cornerRadius="12dp" />
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtOlvido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -65,7 +71,7 @@
         android:textSize="14dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="20dp"
@@ -79,7 +85,7 @@
         android:gravity="center_horizontal">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtNoTenes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
@@ -88,7 +94,7 @@
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txtResgitrate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
