@@ -316,7 +316,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/image_profile_user"
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="4dp"
@@ -351,7 +351,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_register_user3"
+            android:id="@+id/btn_exit"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="59dp"
