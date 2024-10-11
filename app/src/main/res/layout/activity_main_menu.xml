@@ -316,7 +316,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/image_profile_user"
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="4dp"
@@ -351,25 +351,25 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_register_user3"
-            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+            android:id="@+id/btn_exit"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:layout_marginTop="9dp"
             android:backgroundTint="@color/exit"
             android:clickable="true"
             android:fontFamily="sans-serif"
+            android:gravity="center_vertical"
             android:text="Salir"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:cornerRadius="3dp"
             app:flow_horizontalAlign="center"
             app:icon="@drawable/exit_icon"
             app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            app:iconSize="23dp"
+            app:iconPadding="5dp"
+            app:iconSize="18dp"
             app:iconTint="@color/black"
             tools:ignore="RtlCompat" />
 

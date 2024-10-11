@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".CustomerCard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <TextView
+            android:id="@+id/txt_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Reporte de Clientes"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_names"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="36dp"
+            android:text="Cuota a Vencer" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lay_list_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/like_container_corner"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/background_like"
+                    android:contentDescription="Botón redondo con imagen"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/opaque_like" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Nombre Apellido"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="25/12/2024"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/like_container_corner"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/background_like"
+                    android:contentDescription="Botón redondo con imagen"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/like" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Nombre Apellido"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="25/12/2024"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/like_container_corner"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/background_like"
+                    android:contentDescription="Botón redondo con imagen"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/opaque_like" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Nombre Apellido"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="25/12/2024"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/like_container_corner"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/background_like"
+                    android:contentDescription="Botón redondo con imagen"
+                    android:padding="13dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/like" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Nombre Apellido"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="25/12/2024"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#006ffd"
+            android:text="Regresar"
+            app:cornerRadius="12dp" />
+
+    </LinearLayout>
+
+       <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_navbar"
+            android:backgroundTint="@color/background_navbar"
+            android:orientation="horizontal"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:layout_gravity="bottom">
+
+            <Button
+                android:id="@+id/btn_nav_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Home"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/home_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/btn_nav_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Registro"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/register_client_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/btn_nav_payment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Cuotas"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/payment_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/btn_nav_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Carnet"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/emmit_card_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
+
+            <Button
+                android:id="@+id/btn_nav_reports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Reportes"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/customers_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
+
+
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+
+</LinearLayout>

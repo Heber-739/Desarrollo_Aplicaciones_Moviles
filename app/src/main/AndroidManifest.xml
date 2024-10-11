@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubDeportivo"
         tools:targetApi="31">
+
+        <activity
+            android:name=".CustomersRegister"
+            android:exported="true" />
+        
+        <activity
+            android:name=".CustomerCard"
+            android:exported="true" />
+
         <activity
             android:name=".MainMenu"
             android:exported="true">
