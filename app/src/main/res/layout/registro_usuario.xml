@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:Color="@android:color/darker_gray"
+
             android:buttonTint="@android:color/darker_gray"
             android:minHeight="16dp" />
 
@@ -176,8 +176,8 @@
         android:text="Registrar Usuario"
         app:cornerRadius="12dp" />
 
+    <!-- INICIO DEL CODIGO DE LA BOTONERA -->
 
-    // INICIO DEL CODIGO DE LA BOTONERA
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -324,6 +324,6 @@
         </LinearLayout>
 
     </LinearLayout>
-    // FIN DEL CODIGO DE LA BOTONERA
+
 
 </LinearLayout>
