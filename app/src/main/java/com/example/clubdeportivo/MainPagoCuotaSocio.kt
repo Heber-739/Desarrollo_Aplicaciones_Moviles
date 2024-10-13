@@ -2,21 +2,22 @@ package com.example.clubdeportivo
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
-class CustomersRegister : AppCompatActivity() {
+class MainPagoCuotaSocio : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_customers_register)
-        val btnHome= findViewById<Button>(R.id.btn_nav_home)
-        val btnRegis = findViewById<Button>(R.id.btn_nav_register)
-        val btnCuot = findViewById<Button>(R.id.btn_nav_payment)
-        val btnCarnet = findViewById<Button>(R.id.btn_nav_card)
-        val btnReport = findViewById<Button>(R.id.btn_nav_reports)
+        setContentView(R.layout.pago_de_cuota_socio)
+
+        val btnHome= findViewById<ImageButton>(R.id.btnHome)
+        val btnRegis = findViewById<ImageButton>(R.id.btnAnadir)
+        val btnCuot = findViewById<ImageButton>(R.id.btnPago)
+        val btnCarnet = findViewById<ImageButton>(R.id.btnCarnet)
+        val btnReport = findViewById<ImageButton>(R.id.btnReportes)
+        val btnPago = findViewById<Button>(R.id.btn_registrar_pago)
 
         btnHome.setOnClickListener{
             Utils.cambioPantalla(this, MainMenu::class.java)
@@ -33,11 +34,10 @@ class CustomersRegister : AppCompatActivity() {
         btnReport.setOnClickListener{
             Utils.cambioPantalla(this, CustomersRegister::class.java)
         }
-
-
-        val btnRegresar = findViewById<Button>(R.id.btn_back)
-        btnRegresar.setOnClickListener{
-            Utils.cambioPantalla(this, MainMenu::class.java)
+        btnPago.setOnClickListener{
+            Utils.cambioPantalla(this, MainReciboPago::class.java)
         }
+
     }
+
 }

@@ -22,169 +22,169 @@
         tools:context=".MainActivity">
 
 
-        <View
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/txtRegistroUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Registro de usuario"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/txtCreauna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif"
+        android:text="Creá una cuenta para comenzar"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/txtClienteNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Nombre"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/editClienteNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="Nombre"
+        android:inputType="text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/txtClienteEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Dirección de email"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/editClienteEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="nombre@dominio.com"
+        android:inputType="text"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/txtClientePass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Contraseña"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/editClientePass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editClientePass2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/borde_redondo"
+        android:hint="Confirma tu Contraseña"
+        android:inputType="textPassword"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <CheckBox
+            android:id="@+id/chkUsuario"
             android:layout_width="wrap_content"
-            android:layout_height="10dp" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:buttonTint="@android:color/darker_gray"
+            android:minHeight="16dp" />
 
         <TextView
-            android:id="@+id/txtRegistroUsuario"
-            android:layout_width="match_parent"
+            android:id="@+id/txtTerminos"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Registro de usuario"
-            android:textColor="@color/black"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/txtCreauna"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif"
-            android:text="Creá una cuenta para comenzar"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="12dp" />
-
-        <TextView
-            android:id="@+id/txtClienteNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Nombre"
-            android:textColor="@color/black"
-            android:textSize="12dp" />
-
-        <EditText
-            android:id="@+id/editClienteNombre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/borde_redondo"
-            android:hint="Nombre"
-            android:inputType="text"
+            android:text="Ya leí y acepto los  "
             android:textColor="@android:color/darker_gray"
             android:textSize="14dp" />
 
         <TextView
-            android:id="@+id/txtClienteEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Dirección de email"
-            android:textColor="@color/black"
-            android:textSize="12dp" />
-
-        <EditText
-            android:id="@+id/editClienteEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/borde_redondo"
-            android:hint="nombre@dominio.com"
-            android:inputType="text"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14dp" />
-
-        <TextView
-            android:id="@+id/txtClientePass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Contraseña"
-            android:textColor="@color/black"
-            android:textSize="12dp" />
-
-        <EditText
-            android:id="@+id/editClientePass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/borde_redondo"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-        <EditText
-            android:id="@+id/editClientePass2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/borde_redondo"
-            android:hint="Confirma tu Contraseña"
-            android:inputType="textPassword"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="14sp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
-
-            <CheckBox
-                android:id="@+id/chkUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:Color="@android:color/darker_gray"
-                android:buttonTint="@android:color/darker_gray"
-                android:minHeight="16dp" />
-
-            <TextView
-                android:id="@+id/txtTerminos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="Ya leí y acepto los  "
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14dp" />
-
-            <TextView
-                android:id="@+id/txtTerminosLink"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
-                android:text="Términos y Condiciones"
-                android:textColor="#006ffd"
-                android:textSize="14dp" />
-
-            <TextView
-                android:id="@+id/txtPoliticas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text=" y las "
-                android:textColor="@android:color/darker_gray"
-                android:textSize="14dp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtPoliticasLink"
+            android:id="@+id/txtTerminosLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
-            android:text="Políticas de Privacidad"
+            android:text="Términos y Condiciones"
             android:textColor="#006ffd"
             android:textSize="14dp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
+        <TextView
+            android:id="@+id/txtPoliticas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text=" y las "
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14dp" />
 
-        <Button
-            android:id="@+id/btnRegistroUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#006ffd"
-            android:text="Registrar Usuario"
-            app:cornerRadius="12dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtPoliticasLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Políticas de Privacidad"
+        android:textColor="#006ffd"
+        android:textSize="14dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/btnRegistroUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#006ffd"
+        android:text="Registrar Usuario"
+        app:cornerRadius="12dp" />
 
     </LinearLayout>
     // INICIO DEL CODIGO DE LA BOTONERA

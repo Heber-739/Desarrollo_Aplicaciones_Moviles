@@ -15,6 +15,8 @@
         android:backgroundTint="@color/white"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="1dp">
 
         <ImageView
@@ -142,7 +144,7 @@
                     android:outlineSpotShadowColor="@color/black"
                     android:paddingStart="12dp"
                     android:scrollHorizontally="true"
-                    android:text="Reportes de clienets"
+                    android:text="Registro de clienets"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -316,7 +318,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/image_profile_user"
+                    android:id="@+id/imageView3"
                     android:layout_width="42dp"
                     android:layout_height="42dp"
                     android:layout_marginTop="4dp"
@@ -359,17 +361,17 @@
             android:backgroundTint="@color/exit"
             android:clickable="true"
             android:fontFamily="sans-serif"
-            android:gravity="center_vertical"
             android:text="Salir"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:cornerRadius="3dp"
             app:flow_horizontalAlign="center"
             app:icon="@drawable/exit_icon"
             app:iconGravity="textStart"
-            app:iconPadding="5dp"
-            app:iconSize="18dp"
+            app:iconPadding="8dp"
+            app:iconSize="23dp"
             app:iconTint="@color/black"
             tools:ignore="RtlCompat" />
 
