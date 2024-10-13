@@ -14,19 +14,23 @@ class MainMenu : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_menu)
         val buttonUsu = findViewById<Button>(R.id.btn_register_user)
-        val buttonSalir = findViewById<Button>(R.id.btn_salir)
-
+        val buttonSalir = findViewById<Button>(R.id.btn_exit)
+        val buttonReCliente = findViewById<Button>(R.id.btn_customers_register)
+        val btnCarnet = findViewById<Button>(R.id.btn_emmit_card)
         buttonUsu.setOnClickListener {
-            cambioPantalla(MainCliente::class.java)
+            Utils.cambioPantalla(this,MainCliente::class.java)
         }
         buttonSalir.setOnClickListener{
-            cambioPantalla(MainActivity::class.java)
+            Utils.cambioPantalla(this,MainActivity::class.java)
+        }
+        buttonReCliente.setOnClickListener{
+            Utils.cambioPantalla(this,CustomersRegister::class.java)
+        }
+        btnCarnet.setOnClickListener{
+            Utils.cambioPantalla(this, CustomerCard::class.java)
         }
     }
-    // Función que inicia la segunda actividad
-    fun cambioPantalla(actividad: Class<*>) {
-        val intent = Intent(this, actividad)
-        startActivity(intent)
-    }
+
+
 
 }

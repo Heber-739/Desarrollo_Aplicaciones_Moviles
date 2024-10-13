@@ -8,8 +8,18 @@
     android:backgroundTint="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="0dp"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".MainActivity">
 
 
     <View
@@ -176,154 +186,152 @@
         android:text="Registrar Usuario"
         app:cornerRadius="12dp" />
 
-    <!-- INICIO DEL CODIGO DE LA BOTONERA -->
-
+    </LinearLayout>
+    // INICIO DEL CODIGO DE LA BOTONERA
 
     <LinearLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom">
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="0dp">
 
 
-        <LinearLayout
-            android:id="@+id/linLayHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/btnHome"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/home" />
-
-            <TextView
-                android:id="@+id/txtBtnHome"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Home"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:layout_gravity="bottom"
+                android:background="@color/background_navbar"
+                android:backgroundTint="@color/background_navbar"
+                android:orientation="horizontal"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp">
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/btn_nav_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Home"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/home_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Registro"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/register_client_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Cuotas"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/payment_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Carnet"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/emmit_card_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_reports"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Reportes"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/customers_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
 
 
-        <LinearLayout
-            android:id="@+id/linLayAnadir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnAnadir"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/anadir" />
-
-            <TextView
-                android:id="@+id/txtAnadir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Añadir"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayPago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnPago"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/pago" />
-
-            <TextView
-                android:id="@+id/txtPago"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Pago"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linLayCarnet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnCarnet"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/carnet" />
-
-            <TextView
-                android:id="@+id/txtCarnet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Carnet"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayReportes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnReportes"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/reporte" />
-
-            <TextView
-                android:id="@+id/txtReportes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Reportes"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
+            </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
-
+    // FIN DEL CODIGO DE LA BOTONERA
 
 </LinearLayout>

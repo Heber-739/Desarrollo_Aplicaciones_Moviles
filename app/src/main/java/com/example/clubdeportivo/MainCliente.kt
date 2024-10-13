@@ -14,14 +14,15 @@ class MainCliente : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.registro_cliente)
-        val button = findViewById<ImageButton>(R.id.btnHome)
+        val button = findViewById<Button>(R.id.btn_nav_home)
+        val btnRegistro = findViewById<Button>(R.id.btnClienteRegistro)
         button.setOnClickListener{
-            cambioPantalla(MainMenu::class.java)
+            Utils.cambioPantalla(this,MainMenu::class.java)
+        }
+        btnRegistro.setOnClickListener{
+            Utils.cambioPantalla(this, MainPagoCuotaSocio::class.java)
         }
 
     }
-    fun cambioPantalla(actividad: Class<*>) {
-        val intent = Intent(this, actividad)
-        startActivity(intent)
-    }
+
 }

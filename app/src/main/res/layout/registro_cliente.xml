@@ -2,459 +2,459 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/maiInicio"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="0dp"
     tools:context=".MainActivity">
 
-
-<!-- INICIO DEL CODIGO DE LA BOTONERA DE PASOS-->
     <LinearLayout
-
+        android:id="@+id/primario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".MainActivity">
+
 
 
 
         <LinearLayout
-            android:id="@+id/linLayReportes"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:gravity="center">
 
-            <ImageButton
-                android:id="@+id/btnReportes"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/white"
-                android:padding="10dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/number_1" />
 
-            <TextView
-                android:id="@+id/txtReportes"
+            <LinearLayout
+                android:id="@+id/linLayReportes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:fontFamily="sans-serif-black"
-                android:text="Registro"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnReportes"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/number_1" />
+
+                <TextView
+                    android:id="@+id/txtReportes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="Registro"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linLayPago"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnPago"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/number_2b" />
+
+                <TextView
+                    android:id="@+id/txtPago"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="Pago"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linLayCarnet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/btnCarnet"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/white"
+                    android:padding="10dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/number_3b" />
+
+                <TextView
+                    android:id="@+id/txtCarnet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="Carnet"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linLayPago"
+
+
+        <TextView
+            android:id="@+id/txtRegistroCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Registro de Clientes"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/txtIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif"
+            android:text="Ingreso de los datos del Socio o No Socio"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/txtClienteNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Nombre Completo"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <EditText
+            android:id="@+id/editClienteNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="Nombre Completo"
+            android:inputType="text"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/txtClienteDNI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="DNI"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <EditText
+            android:id="@+id/editClienteDNI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="Número de Documento"
+            android:inputType="text"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/txtClienteEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+        <EditText
+            android:id="@+id/editClienteEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="nombre@dominio.com"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtClienteFechaNto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Fecha de Nacimiento"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+
+        <EditText
+            android:id="@+id/editClienteFechaNto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/borde_redondo"
+            android:hint="Fecha de Nacimiento"
+            android:inputType="date"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/txtClienteTipo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Tipo de Cliente"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupSocio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/btnPago"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/white"
-                android:padding="10dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/number_2b" />
-
-            <TextView
-                android:id="@+id/txtPago"
+            <RadioButton
+                android:id="@+id/radioButtonSocio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:fontFamily="sans-serif-black"
-                android:text="Pago"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:fontFamily="sans-serif"
+                android:text="Socio" />
 
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/radioButtonNoSocio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="No Socio" />
 
-        <LinearLayout
-            android:id="@+id/linLayCarnet"
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/txtClienteApto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Apto Físico"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupApto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/btnCarnet"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:backgroundTint="@color/white"
-                android:padding="10dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/number_3b" />
-
-            <TextView
-                android:id="@+id/txtCarnet"
+            <RadioButton
+                android:id="@+id/radioButtonApto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:fontFamily="sans-serif-black"
-                android:text="Carnet"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:fontFamily="sans-serif"
+                android:text="Apto" />
 
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/radioButtonNoApto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="No Apto" />
+
+        </RadioGroup>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <Button
+            android:id="@+id/btnClienteRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#006ffd"
+            android:text="Registrar Cliente"
+            app:cornerRadius="12dp" />
 
     </LinearLayout>
-    <!-- FIN DEL CODIGO DE LA BOTONERA DE PASOS -->
 
-
-
-
-    <TextView
-        android:id="@+id/txtRegistroCliente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Registro de Clientes"
-        android:textColor="@color/black"
-        android:textSize="18dp" />
-
-    <TextView
-        android:id="@+id/txtIngreso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="sans-serif"
-        android:text="Ingreso de los datos del Socio o No Socio"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="12dp" />
-
-    <TextView
-        android:id="@+id/txtClienteNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Nombre Completo"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-    <EditText
-        android:id="@+id/editClienteNombre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/borde_redondo"
-        android:hint="Nombre Completo"
-        android:inputType="text"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14dp"/>
-
-    <TextView
-        android:id="@+id/txtClienteDNI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="DNI"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-    <EditText
-        android:id="@+id/editClienteDNI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/borde_redondo"
-        android:hint="Número de Documento"
-        android:inputType="text"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14dp" />
-
-    <TextView
-        android:id="@+id/txtClienteEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Email"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-    <EditText
-        android:id="@+id/editClienteEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/borde_redondo"
-        android:hint="nombre@dominio.com"
-        android:inputType="textEmailAddress"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/txtClienteFechaNto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Fecha de Nacimiento"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-
-
-    <EditText
-        android:id="@+id/editClienteFechaNto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/borde_redondo"
-        android:hint="Fecha de Nacimiento"
-        android:inputType="date"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp" />
-
-    <TextView
-        android:id="@+id/txtClienteTipo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Tipo de Cliente"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-
-    <RadioGroup
-        android:id="@+id/radioGroupSocio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButtonSocio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="Socio" />
-
-        <RadioButton
-            android:id="@+id/radioButtonNoSocio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="No Socio" />
-
-    </RadioGroup>
-
-
-    <TextView
-        android:id="@+id/txtClienteApto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Apto Físico"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
-
-
-    <RadioGroup
-        android:id="@+id/radioGroupApto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButtonApto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="Apto" />
-
-        <RadioButton
-            android:id="@+id/radioButtonNoApto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:text="No Apto" />
-
-    </RadioGroup>
-
-
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
-
-    <Button
-        android:id="@+id/btnClienteRegistro"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginBottom="20dp"
-        android:backgroundTint="#006ffd"
-        android:text="Registrar Cliente"
-        app:cornerRadius="12dp" />
-
-
-    <!--INICIO DEL CODIGO DE LA BOTONERA -->
 
     <LinearLayout
+        android:id="@+id/botones"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom">
+        android:backgroundTint="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="147dp"
+                android:layout_gravity="bottom"
+                android:background="@color/background_navbar"
+                android:backgroundTint="@color/background_navbar"
+                android:orientation="horizontal"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp">
+
+                <Button
+                    android:id="@+id/btn_nav_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Home"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/home_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Registro"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/register_client_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Cuotas"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/payment_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Carnet"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/emmit_card_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/btn_nav_reports"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="center|center_horizontal"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="0dp"
+                    android:text="Reportes"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    app:cornerRadius="0dp"
+                    app:icon="@drawable/customers_icon"
+                    app:iconGravity="top"
+                    app:iconPadding="0dp"
+                    app:iconSize="23dp"
+                    app:iconTint="@color/black"
+                    tools:ignore="RtlCompat" />
 
 
-        <LinearLayout
-            android:id="@+id/linLayHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnHome"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/home" />
-
-            <TextView
-                android:id="@+id/txtBtnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Home"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayAnadir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnAnadir"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/anadir" />
-
-            <TextView
-                android:id="@+id/txtAnadir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Añadir"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayPagoDos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnPagoDos"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/pago" />
-
-            <TextView
-                android:id="@+id/txtPagoDos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Pago"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linLayCarnetDos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnCarnetDOs"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/carnet" />
-
-            <TextView
-                android:id="@+id/txtCarnetDos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Carnet"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayReportesDos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnReportesDos"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/reporte" />
-
-            <TextView
-                android:id="@+id/txtReportesDos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Reportes"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
+            </LinearLayout>
+        </FrameLayout>
     </LinearLayout>
-    <!-- FIN DEL CODIGO DE LA BOTONERA-->
-
 </LinearLayout>

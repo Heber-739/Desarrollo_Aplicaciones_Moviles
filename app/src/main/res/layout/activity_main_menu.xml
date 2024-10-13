@@ -15,9 +15,9 @@
         android:backgroundTint="@color/white"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="1dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteX="1dp">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -131,7 +131,7 @@
 
 
                 <Button
-                    android:id="@+id/btn_regClient"
+                    android:id="@+id/btn_customers_register"
                     style="@style/Widget.Material3.Button.OutlinedButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
@@ -353,8 +353,8 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_salir"
-            style="@style/Widget.Material3.Button.OutlinedButton.Icon"
+            android:id="@+id/btn_exit"
+            style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:layout_marginTop="9dp"
