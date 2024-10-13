@@ -1,12 +1,9 @@
 package com.example.clubdeportivo
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +12,7 @@ class MainMenu : AppCompatActivity() {
         setContentView(R.layout.activity_main_menu)
         val buttonUsu = findViewById<Button>(R.id.btn_register_user)
         val buttonSalir = findViewById<Button>(R.id.btn_exit)
-        val buttonReCliente = findViewById<Button>(R.id.btn_customers_register)
+        val buttonReCliente = findViewById<Button>(R.id.btn_customers_report)
         val btnCarnet = findViewById<Button>(R.id.btn_emmit_card)
         buttonUsu.setOnClickListener {
             Utils.cambioPantalla(this,MainCliente::class.java)

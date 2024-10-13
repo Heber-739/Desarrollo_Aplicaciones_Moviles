@@ -12,11 +12,11 @@ class MainPagoCuotaNoSocio : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.pago_de_cuota_nosocio)
 
-        val btnHome= findViewById<ImageButton>(R.id.btnHome)
-        val btnRegis = findViewById<ImageButton>(R.id.btnAnadir)
-        val btnCuot = findViewById<ImageButton>(R.id.btnPago)
-        val btnCarnet = findViewById<ImageButton>(R.id.btnCarnet)
-        val btnReport = findViewById<ImageButton>(R.id.btnReportes)
+        val btnHome= findViewById<Button>(R.id.btn_nav_home)
+        val btnRegis = findViewById<Button>(R.id.btn_nav_register)
+        val btnCuot = findViewById<Button>(R.id.btn_nav_payment)
+        val btnCarnet = findViewById<Button>(R.id.btn_nav_card)
+        val btnReport = findViewById<Button>(R.id.btn_nav_reports)
         val btnPago = findViewById<Button>(R.id.btn_registrar_pago)
 
         btnHome.setOnClickListener{

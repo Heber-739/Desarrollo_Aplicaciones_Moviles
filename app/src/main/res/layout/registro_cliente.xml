@@ -5,11 +5,13 @@
     android:id="@+id/maiInicio"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:backgroundTint="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="0dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@+id/primario"
@@ -20,8 +22,6 @@
         android:orientation="vertical"
         android:padding="30dp"
         tools:context=".MainActivity">
-
-
 
 
         <LinearLayout
@@ -119,7 +119,6 @@
 
 
         </LinearLayout>
-
 
 
         <TextView
@@ -251,6 +250,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
+                android:checked="true"
                 android:text="Socio" />
 
             <RadioButton
@@ -294,6 +294,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
+                android:checked="true"
                 android:text="No Apto" />
 
         </RadioGroup>
@@ -307,7 +308,6 @@
             android:id="@+id/btnClienteRegistro"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginBottom="20dp"
             android:backgroundTint="#006ffd"
             android:text="Registrar Cliente"
             app:cornerRadius="12dp" />
@@ -330,10 +330,11 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="147dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@color/background_navbar"
                 android:backgroundTint="@color/background_navbar"
+                android:gravity="bottom"
                 android:orientation="horizontal"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp">

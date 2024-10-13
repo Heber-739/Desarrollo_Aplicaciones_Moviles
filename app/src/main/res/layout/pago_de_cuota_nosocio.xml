@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:fitsSystemWindows="true">
 
 
     <LinearLayout
@@ -16,7 +18,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
 
         <LinearLayout
             android:id="@+id/linLayRegistro1"
@@ -117,6 +121,7 @@
         android:text="Pago de Cuota de No Socio"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +134,7 @@
         android:layout_marginTop="8dp"
         android:text="No Socio: "
         android:textSize="18sp"
+        android:paddingStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_titulo" />
 
@@ -138,6 +144,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:gravity="center_vertical"
+        android:paddingStart="16dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_socio">
 
@@ -161,6 +168,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -286,7 +295,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:background="#EAF2FF"
         android:clipToPadding="false"
         android:orientation="vertical"
@@ -347,7 +358,9 @@
         android:id="@+id/btn_registrar_pago"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="#006ffd"
         android:text="Registrar Pago"
         android:textColor="@android:color/white"
@@ -357,154 +370,137 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_beneficios" />
 
-    <LinearLayout
-        android:layout_width="351dp"
-        android:layout_height="117dp"
-        android:gravity="bottom"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="577dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_registrar_pago">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/linLayHome"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="bottom"
+            android:background="@color/background_navbar"
+            android:backgroundTint="@color/background_navbar"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp">
 
-            <ImageButton
-                android:id="@+id/btnHome"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/home" />
-
-            <TextView
-                android:id="@+id/txtBtnHome"
+            <Button
+                android:id="@+id/btn_nav_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
                 android:text="Home"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/home_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayAnadir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnAnadir"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/anadir" />
-
-            <TextView
-                android:id="@+id/txtAnadir"
+            <Button
+                android:id="@+id/btn_nav_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Añadir"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Registro"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/register_client_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayPago"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnPago"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/pago" />
-
-            <TextView
-                android:id="@+id/txtPago"
+            <Button
+                android:id="@+id/btn_nav_payment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Pago"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
+                android:text="Cuotas"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/payment_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linLayCarnet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnCarnet"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/carnet" />
-
-            <TextView
-                android:id="@+id/txtCarnet"
+            <Button
+                android:id="@+id/btn_nav_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
                 android:text="Carnet"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/emmit_card_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/linLayReportes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/btnReportes"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:backgroundTint="@color/white"
-                android:padding="15dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/reporte" />
-
-            <TextView
-                android:id="@+id/txtReportes"
+            <Button
+                android:id="@+id/btn_nav_reports"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
+                android:layout_weight="1"
+                android:backgroundTint="@color/background_navbar"
+                android:gravity="center|center_horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="0dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="0dp"
                 android:text="Reportes"
+                android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="12sp" />
+                android:textSize="12dp"
+                app:cornerRadius="0dp"
+                app:icon="@drawable/customers_icon"
+                app:iconGravity="top"
+                app:iconPadding="0dp"
+                app:iconSize="23dp"
+                app:iconTint="@color/black"
+                tools:ignore="RtlCompat" />
+
 
         </LinearLayout>
-
-    </LinearLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
