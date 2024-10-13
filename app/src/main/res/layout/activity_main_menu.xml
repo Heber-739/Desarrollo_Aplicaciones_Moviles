@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".MainMenu">
+    tools:context=".MainMenu"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="409dp"
@@ -296,7 +297,9 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/lines" />
         </LinearLayout>
-
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -352,6 +355,12 @@
 
         </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
         <Button
             android:id="@+id/btn_exit"
             style="@style/Widget.Material3.Button.TextButton"
@@ -375,6 +384,8 @@
             app:iconTint="@color/black"
             tools:ignore="RtlCompat" />
 
+            </LinearLayout>
+        </FrameLayout>
 
     </LinearLayout>
 
