@@ -8,5 +8,6 @@
     <color name="like_background">#E8E9F1</color>
     <color name="background_layout_like">#F8F9FE</color>
     <color name="background_navbar">#FEF7FF</color>
-
+    <color name="blue_btn">#006FFD</color>
+    <color name="curtain">#D91F2064</color>
 </resources>
