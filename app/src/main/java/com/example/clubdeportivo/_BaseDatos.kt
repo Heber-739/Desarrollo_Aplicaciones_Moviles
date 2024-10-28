@@ -15,26 +15,28 @@ class BaseDatos(context: Context) :
 
         // Nombre de la tabla y columnas
         private val TABLE_USERS = "Usuarios"
-        private val COLUMN_ID = "Id_usu"
-        private val COLUMN_NAME = "Nombre_usu"
-        private val COLUMN_USER = "Usuario_usu"
-        private val COLUMN_PASS = "Pass_usu"
+        private val COLUMN_USERS_ID = "id_usuario"
+        private val COLUMN_USERS_EMAIL = "email_usuario"
+        private val COLUMN_USERS_NAME = "nombre_usuario"
+        private val COLUMN_USERS_PASS = "password_usuario"
+        private val COLUMN_USERS_ROL = "rol_id"
 
         // Sentencia SQL para crear la tabla
-        /*
-        private val CREATE_TABLE_USERS = ("CREATE TABLE " + TABLE_USERS + " (" + COLUMN_ID +
-        " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + " TEXT, " + COLUMN_USER +
-        " TEXT, " +  COLUMN_PASS + " TEXT);")
-        */
+
+        //        private val CREATE_TABLE_USERS = ("CREATE TABLE " + TABLE_USERS + " (" + COLUMN_USERS_ID +
+        //        " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_USERS_EMAIL + " TEXT, " + COLUMN_USERS_NAME +
+        //        " TEXT, " +  COLUMN_USERS_PASS + " TEXT " + COLUMN_USERS_ROL + " INTEGER);")
+
         // Sentencia SQL para crear la tabla
-        private  val CREATE_TABLE_USERS = """
+        private  val CREATE_TABLE_USERS = ("""
             CREATE TABLE $TABLE_USERS (
-                $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                $COLUMN_NAME TEXT,
-                $COLUMN_USER TEXT,
-                $COLUMN_PASS TEXT
+                $COLUMN_USERS_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COLUMN_USERS_EMAIL TEXT,
+                $COLUMN_USERS_NAME TEXT,
+                $COLUMN_USERS_PASS TEXT,
+                $COLUMN_USERS_ROL INTEGER
             );
-        """
+        """)
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -47,12 +49,13 @@ class BaseDatos(context: Context) :
     }
 
     // Método para insertar un usuario en la base de datos
-    fun insertarUsuario(nombre: String, usuario: String, pass: String): Long {
+    fun insertarUsuario(nombre: String, usuario: String, pass: String, rol: Int): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
-            put(COLUMN_NAME, nombre)
-            put(COLUMN_USER, usuario)
-            put(COLUMN_PASS, pass)
+            put(COLUMN_USERS_NAME, nombre)
+            put(COLUMN_USERS_EMAIL, usuario)
+            put(COLUMN_USERS_PASS, pass)
+            put(COLUMN_USERS_ROL, rol)
         }
         val result = db.insert(TABLE_USERS, null, values)
         db.close()
