@@ -18,6 +18,7 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         private const val COLUMN_APTO_FISICO = "apto_fisico"
         private const val COLUMN_TIPO_CLIENTE = "tipo_cliente"
         private const val COLUMN_FECHA_VENC_PAGO = "fecha_venc_pago"
+        private const val COLUMN_NRO_AVATAR = "nro_avatar"
 
         // Tabla de Pagos
         public const val TABLE_PAGO = "Pagos"
@@ -38,7 +39,8 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "$COLUMN_FECHA_NAC DATE DEFAULT CURRENT_DATE," +
                 "$COLUMN_APTO_FISICO BOOLEAN DEFAULT 1," +
                 "$COLUMN_TIPO_CLIENTE TEXT NOT NULL, " +
-                "$COLUMN_FECHA_VENC_PAGO DATE DEFAULT CURRENT_DATE);"
+                "$COLUMN_FECHA_VENC_PAGO DATE DEFAULT CURRENT_DATE)" +
+                "$COLUMN_NRO_AVATAR INTEGER DEFAULT 0;"
         db?.execSQL(createTableClientes)
 
         // Creacion de tabla de Pago

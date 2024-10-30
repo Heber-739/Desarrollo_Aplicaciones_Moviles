@@ -321,6 +321,7 @@
                 android:orientation="horizontal">
 
                 <FrameLayout
+                    android:id="@+id/profileCont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -332,8 +333,8 @@
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:layout_gravity="center"
-                        app:srcCompat="@drawable/custom_avatar"
-                        tools:srcCompat="@drawable/custom_avatar" />
+                        app:srcCompat="@drawable/avatar_0"
+                        tools:srcCompat="@drawable/avatar_0" />
 
                     <ImageView
                         android:id="@+id/addIcon"
@@ -344,23 +345,6 @@
                         tools:srcCompat="@drawable/add" />
 
                 </FrameLayout>
-
-                <!--
-
-
-            <ImageView
-                android:id="@+id/image_background"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/imagen_fondo" />
-
-            <ImageView
-                android:id="@+id/image_overlay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/imagen_encima"
-                android:layout_gravity="center" />
-        -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
