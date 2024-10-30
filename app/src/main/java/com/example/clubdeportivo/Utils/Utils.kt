@@ -1,8 +1,7 @@
-package com.example.clubdeportivo
+package com.example.clubdeportivo.Utils
 
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
 
 
 object Utils {
