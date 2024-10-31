@@ -2,6 +2,7 @@ package com.example.clubdeportivo
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.clubdeportivo.Utils.Utils
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity(),  ModalFragment.ModalListener {
 
 
         //aqui hace el cambio de pantalla
+
 
         val button = findViewById<Button>(R.id.btnLogin)
         var pass = true

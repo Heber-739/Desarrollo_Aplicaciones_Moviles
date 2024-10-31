@@ -320,15 +320,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="42dp"
-                    android:layout_height="42dp"
+                <FrameLayout
+                    android:id="@+id/profileCont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="4dp"
-                    app:srcCompat="@drawable/custom_avatar"
-                    tools:srcCompat="@drawable/custom_avatar" />
+                    android:layout_marginBottom="4dp">
+
+                    <ImageView
+                        android:id="@+id/profilePhoto"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_gravity="center"
+                        app:srcCompat="@drawable/avatar_0"
+                        tools:srcCompat="@drawable/avatar_0" />
+
+                    <ImageView
+                        android:id="@+id/addIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom|end"
+                        android:elevation="10dp"
+                        tools:srcCompat="@drawable/add" />
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
