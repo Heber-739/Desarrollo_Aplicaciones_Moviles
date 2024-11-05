@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:inputType="textEmailAddress"
-        android:text="Dirección de email"
+        android:hint="Dirección de email"
         android:textSize="14dp"
         android:textColor="@android:color/darker_gray"
         android:background="@drawable/borde_redondo" />
@@ -55,7 +55,7 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/borde_redondo"
         android:inputType="textPassword"
-        android:text="Contraseña"
+        android:hint="Contraseña"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp" />
 
