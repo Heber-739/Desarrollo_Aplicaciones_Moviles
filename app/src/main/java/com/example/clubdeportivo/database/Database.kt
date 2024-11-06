@@ -21,13 +21,14 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         private const val COLUMN_NRO_AVATAR = "nro_avatar"
 
         // Tabla de Pagos
-        public const val TABLE_PAGO = "Pagos"
+        const val TABLE_PAGO = "Pagos"
         private const val COLUMN_PAGO_ID = "id"
-        public const val COLUMN_CLIENTE_DNI_FK = "cliente_dni"
-        public const val COLUMN_MONTO_PAGO = "monto_pago"
-        public const val COLUMN_VENC_PAGO = "venc_pago"
-        public const val COLUMN_FECHA_PAGO = "fecha_pago"
-        public const val COLUMN_METODO_PAGO = "metodo_pago"
+        const val COLUMN_CLIENTE_DNI_FK = "cliente_dni"
+        const val COLUMN_MONTO_PAGO = "monto_pago"
+        const val COLUMN_VENC_PAGO = "venc_pago"
+        const val COLUMN_FECHA_PAGO = "fecha_pago"
+        const val COLUMN_METODO_PAGO = "metodo_pago"
+        const val COLUMN_DIAS_ACCESO = "dias_acceso"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
@@ -39,8 +40,8 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "$COLUMN_FECHA_NAC DATE DEFAULT CURRENT_DATE," +
                 "$COLUMN_APTO_FISICO BOOLEAN DEFAULT 1," +
                 "$COLUMN_TIPO_CLIENTE TEXT NOT NULL, " +
-                "$COLUMN_FECHA_VENC_PAGO DATE DEFAULT CURRENT_DATE)" +
-                "$COLUMN_NRO_AVATAR INTEGER DEFAULT 0;"
+                "$COLUMN_FECHA_VENC_PAGO DATE DEFAULT CURRENT_DATE, " +
+                "$COLUMN_NRO_AVATAR INTEGER DEFAULT 0);"
         db?.execSQL(createTableClientes)
 
         // Creacion de tabla de Pago
@@ -51,7 +52,8 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "$COLUMN_VENC_PAGO DATE DEFAULT CURRENT_DATE," +
                 "$COLUMN_FECHA_PAGO DATE DEFAULT CURRENT_DATE," +
                 "$COLUMN_METODO_PAGO TEXT NOT NULL," +
-                "FOREIGN KEY ($COLUMN_CLIENTE_DNI_FK) REFERENCES $TABLE_CLIENTES($COLUMN_CLIENTE_DNI);"
+                "$COLUMN_DIAS_ACCESO INTEGER," +
+                "FOREIGN KEY ($COLUMN_CLIENTE_DNI_FK) REFERENCES $TABLE_CLIENTES($COLUMN_CLIENTE_DNI));"
         db?.execSQL(createTablePago)
     }
 
