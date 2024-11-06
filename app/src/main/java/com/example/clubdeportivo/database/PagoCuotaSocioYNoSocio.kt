@@ -13,7 +13,7 @@ class PagoCuotaSocioYNoSocio (context: Context) {
     private val dbHelper = Database(context)
 
     // Método para registrar un pago
-    fun registrarPago(dniCliente: Int, monto: Double, metodoPago: String, fechaPago: Long, vencimiento: Long): String {
+    fun registrarPago(dniCliente: Int, monto: Double, metodoPago: String, fechaPago: String, vencimiento: String): String {
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_CLIENTE_DNI_FK, dniCliente)

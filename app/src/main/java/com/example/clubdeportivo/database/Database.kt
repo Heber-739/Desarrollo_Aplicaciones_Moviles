@@ -79,8 +79,8 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 $COLUMN_PAGO_ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 $COLUMN_CLIENTE_DNI_FK INTEGER,
                 $COLUMN_MONTO_PAGO REAL,
-                $COLUMN_VENC_PAGO INTEGER,
-                $COLUMN_FECHA_PAGO INTEGER,
+                $COLUMN_VENC_PAGO TEXT DEFAULT CURRENT_DATE,
+                $COLUMN_FECHA_PAGO TEXT DEFAULT CURRENT_DATE,
                 $COLUMN_METODO_PAGO TEXT NOT NULL,
                 FOREIGN KEY ($COLUMN_CLIENTE_DNI_FK) REFERENCES $TABLE_CLIENTES($COLUMN_CLIENTE_DNI)
             );
