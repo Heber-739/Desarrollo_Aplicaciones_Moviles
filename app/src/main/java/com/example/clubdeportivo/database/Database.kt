@@ -4,10 +4,18 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+    companion object {
 
-    public companion object {
         private const val DATABASE_NAME = "ClubDeportivo.db"
+
+        // Tabla de Usuarios
+        const val TABLE_USERS = "Usuarios"
+        const val COLUMN_USERS_ID = "id_usuario"
+        const val COLUMN_USERS_EMAIL = "email_usuario"
+        const val COLUMN_USERS_NAME = "nombre_usuario"
+        const val COLUMN_USERS_PASS = "password_usuario"
+        const val COLUMN_USERS_ROL = "rol_id"
 
         // Tabla de Clientes
         private const val TABLE_CLIENTES = "Clientes"
@@ -33,34 +41,53 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        // Creacion de tabla de Clientes
-        val createTableClientes = " CREATE TABLE $TABLE_CLIENTES (" +
-                "$COLUMN_CLIENTE_DNI INTEGER PRIMARY KEY, " +
-                "$COLUMN_NOMBRE_CLIENTE TEXT NOT NULL," +
-                "$COLUMN_EMAIL_CLIENTE TEXT NOT NULL," +
-                "$COLUMN_FECHA_NAC DATE DEFAULT CURRENT_DATE," +
-                "$COLUMN_APTO_FISICO BOOLEAN DEFAULT 1," +
-                "$COLUMN_TIPO_CLIENTE TEXT NOT NULL, " +
-                "$COLUMN_FECHA_VENC_PAGO DATE DEFAULT CURRENT_DATE, " +
-                "$COLUMN_NRO_AVATAR INTEGER DEFAULT 0);"
+
+        // Creación de tabla de Usuarios
+        val createTableUsuarios = """
+            CREATE TABLE $TABLE_USERS (
+                $COLUMN_USERS_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COLUMN_USERS_EMAIL TEXT,
+                $COLUMN_USERS_NAME TEXT,
+                $COLUMN_USERS_PASS TEXT,
+                $COLUMN_USERS_ROL INTEGER
+            );
+        """
+        db?.execSQL(createTableUsuarios)
+
+        // Creación de tabla de Clientes
+        val createTableClientes = """
+            CREATE TABLE $TABLE_CLIENTES (
+                $COLUMN_CLIENTE_DNI INTEGER PRIMARY KEY,
+                $COLUMN_NOMBRE_CLIENTE TEXT NOT NULL,
+                $COLUMN_EMAIL_CLIENTE TEXT NOT NULL,
+                $COLUMN_FECHA_NAC DATE DEFAULT CURRENT_DATE,
+                $COLUMN_APTO_FISICO BOOLEAN DEFAULT 1,
+                $COLUMN_TIPO_CLIENTE TEXT NOT NULL,
+                $COLUMN_FECHA_VENC_PAGO DATE DEFAULT CURRENT_DATE,
+                $COLUMN_NRO_AVATAR INTEGER DEFAULT 0
+            );
+        """
         db?.execSQL(createTableClientes)
 
-        // Creacion de tabla de Pago
-        val createTablePago = "CREATE TABLE $TABLE_PAGO (" +
-                "$COLUMN_PAGO_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "$COLUMN_CLIENTE_DNI_FK INTEGER," +
-                "$COLUMN_MONTO_PAGO REAL," +
-                "$COLUMN_VENC_PAGO DATE DEFAULT CURRENT_DATE," +
-                "$COLUMN_FECHA_PAGO DATE DEFAULT CURRENT_DATE," +
-                "$COLUMN_METODO_PAGO TEXT NOT NULL," +
-                "$COLUMN_DIAS_ACCESO INTEGER," +
-                "FOREIGN KEY ($COLUMN_CLIENTE_DNI_FK) REFERENCES $TABLE_CLIENTES($COLUMN_CLIENTE_DNI));"
+        // Creación de tabla de Pagos
+        val createTablePago = """
+            CREATE TABLE $TABLE_PAGO (
+                $COLUMN_PAGO_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                $COLUMN_CLIENTE_DNI_FK INTEGER,
+                $COLUMN_MONTO_PAGO REAL,
+                $COLUMN_VENC_PAGO DATE DEFAULT CURRENT_DATE,
+                $COLUMN_FECHA_PAGO DATE DEFAULT CURRENT_DATE,
+                $COLUMN_METODO_PAGO TEXT NOT NULL,
+                FOREIGN KEY ($COLUMN_CLIENTE_DNI_FK) REFERENCES $TABLE_CLIENTES($COLUMN_CLIENTE_DNI)
+            );
+        """
         db?.execSQL(createTablePago)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_PAGO")
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_CLIENTES")
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
         onCreate(db)
     }
 }
