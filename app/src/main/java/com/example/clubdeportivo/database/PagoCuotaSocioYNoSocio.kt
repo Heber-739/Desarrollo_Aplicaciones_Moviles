@@ -9,7 +9,7 @@ import com.example.clubdeportivo.database.Database.Companion.COLUMN_MONTO_PAGO
 import com.example.clubdeportivo.database.Database.Companion.COLUMN_VENC_PAGO
 import com.example.clubdeportivo.database.Database.Companion.TABLE_PAGO
 
-class PagoCuotaSocio (context: Context) {
+class PagoCuotaSocioYNoSocio (context: Context) {
     private val dbHelper = Database(context)
 
     // Método para registrar un pago
