@@ -148,17 +148,15 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_socio">
 
-
-        <TextView
-            android:id="@+id/spinner_text"
-            android:layout_width="match_parent"
+        <Spinner
+            android:id="@+id/spinner_dias"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:text="Seleccione cantidad de días de acceso"
             android:padding="8dp"
-            android:background="@android:color/white"
+            android:textSize="16sp"
             android:gravity="start"
-            android:drawableEnd="@android:drawable/arrow_down_float" />
+            android:textColor="@android:color/black" />
+
 
     </LinearLayout>
 
@@ -190,11 +188,12 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rb_efectivo"
+                <CheckBox
+                    android:id="@+id/check_efectivo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pago en efectivo"
+                    android:text="Pago en Efectivo"
+                    android:checked="true"
                     android:textSize="18sp"
                     android:layout_weight="1"/>
 
@@ -208,7 +207,6 @@
                         android:id="@+id/tv_precio_efectivo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$1080.00"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -226,7 +224,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sin descuento"
+                android:text="-10 de descuento"
                 android:textColor="#006FFD"
                 android:textSize="14sp"
                 android:layout_marginStart="31dp" />
@@ -246,11 +244,11 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rb_tarjeta"
+                <CheckBox
+                    android:id="@+id/check_tarjeta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pago con tarjeta"
+                    android:text="Pago con Tarjeta"
                     android:textSize="18sp"
                     android:layout_weight="1"/>
 
@@ -264,7 +262,6 @@
                         android:id="@+id/tv_precio_tarjeta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="$1200.00"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -283,7 +280,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-10% de descuento"
+                android:text="Sin descuento"
                 android:textColor="#006FFD"
                 android:textSize="14sp"
                 android:layout_marginStart="31dp"/>

@@ -12,7 +12,7 @@ import com.example.clubdeportivo.database.Database
 import com.example.clubdeportivo.database.PagoCuotaSocio
 import java.util.Calendar
 
-class MainPagoCuotaSocio : AppCompatActivity() {
+class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
     private var clienteDni: Int = 1111
     private var precio: Double =0.0
     private var metodoPago: String?=null
@@ -94,12 +94,22 @@ class MainPagoCuotaSocio : AppCompatActivity() {
                 // Inserta en la base de datos
                 db.registrarPago(clienteDni, precio, metodoPago!!, fechaActual, vencimiento)
 
-                //Debe salir un modal de pago exitoso
+                val modalFragment = ModalFragment.newInstance(
+                    title = "Pago Registrado!",
+                    text = "¿Desea imprimir el recibo el pago?",
+                    btnReject = "No, ir al home",
+                    btnSuccess = "Si, imprimirlo"
+                )
+                modalFragment.show(supportFragmentManager, "ModalFragment")
 
             } else {
-                //Debe salir el modal de que por favor seleccione un metodo de pago.
+
             }
         }
 
+    }
+
+    override fun onModalResult(success: Boolean) {
+        TODO("Not yet implemented")
     }
 }
