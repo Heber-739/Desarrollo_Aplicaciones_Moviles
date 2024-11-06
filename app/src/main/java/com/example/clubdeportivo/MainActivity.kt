@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), ModalFragment.ModalListener {
         // Verifica si los campos están vacíos
         if (email.isEmpty() || password.isEmpty()) {
             val modal = ModalFragment.newInstance("Inicio de sesión incorrecto", "Debe completar todos los" +
-                    " campos", "OK", "Reiniciar")
+                    " campos", "OK")
             modal.show(supportFragmentManager, "ModalFragment")
             return
         }
@@ -90,7 +90,6 @@ class MainActivity : AppCompatActivity(), ModalFragment.ModalListener {
     }
 
     override fun onModalResult(success: Boolean) {
-        val email = findViewById<TextView>(R.id.editLoginEmail)
-        //email.text = if (success) "success" else "reject"
+        passwordField.setText("");
     }
 }
