@@ -148,14 +148,14 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/tv_socio">
 
-        <Spinner
-            android:id="@+id/spinner_dias"
+        <EditText
+            android:id="@+id/editText_dias"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:hint="Ingrese cantidad de días"
+            android:inputType="number"
             android:padding="8dp"
-            android:textSize="16sp"
-            android:gravity="start"
-            android:textColor="@android:color/black" />
+            android:textSize="16sp"/>
 
 
     </LinearLayout>
@@ -284,6 +284,140 @@
                 android:textColor="#006FFD"
                 android:textSize="14sp"
                 android:layout_marginStart="31dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/background_navbar"
+                    android:backgroundTint="@color/background_navbar"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp">
+
+                    <Button
+                        android:id="@+id/btn_nav_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/background_navbar"
+                        android:gravity="center|center_horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="0dp"
+                        android:text="Home"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/home_icon"
+                        app:iconGravity="top"
+                        app:iconPadding="0dp"
+                        app:iconSize="23dp"
+                        app:iconTint="@color/black"
+                        tools:ignore="RtlCompat" />
+
+                    <Button
+                        android:id="@+id/btn_nav_register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/background_navbar"
+                        android:gravity="center|center_horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="0dp"
+                        android:text="Registro"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/register_client_icon"
+                        app:iconGravity="top"
+                        app:iconPadding="0dp"
+                        app:iconSize="23dp"
+                        app:iconTint="@color/black"
+                        tools:ignore="RtlCompat" />
+
+                    <Button
+                        android:id="@+id/btn_nav_payment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/background_navbar"
+                        android:gravity="center|center_horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="0dp"
+                        android:text="Cuotas"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/payment_icon"
+                        app:iconGravity="top"
+                        app:iconPadding="0dp"
+                        app:iconSize="23dp"
+                        app:iconTint="@color/black"
+                        tools:ignore="RtlCompat" />
+
+                    <Button
+                        android:id="@+id/btn_nav_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/background_navbar"
+                        android:gravity="center|center_horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="0dp"
+                        android:text="Carnet"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/emmit_card_icon"
+                        app:iconGravity="top"
+                        app:iconPadding="0dp"
+                        app:iconSize="23dp"
+                        app:iconTint="@color/black"
+                        tools:ignore="RtlCompat" />
+
+                    <Button
+                        android:id="@+id/btn_nav_reports"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/background_navbar"
+                        android:gravity="center|center_horizontal"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="0dp"
+                        android:paddingRight="15dp"
+                        android:paddingBottom="0dp"
+                        android:text="Reportes"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="12dp"
+                        app:cornerRadius="0dp"
+                        app:icon="@drawable/customers_icon"
+                        app:iconGravity="top"
+                        app:iconPadding="0dp"
+                        app:iconSize="23dp"
+                        app:iconTint="@color/black"
+                        tools:ignore="RtlCompat" />
+
+
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
     </RadioGroup>
 
@@ -367,137 +501,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_beneficios" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:background="@color/background_navbar"
-            android:backgroundTint="@color/background_navbar"
-            android:gravity="bottom"
-            android:orientation="horizontal"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp">
-
-            <Button
-                android:id="@+id/btn_nav_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/background_navbar"
-                android:gravity="center|center_horizontal"
-                android:paddingLeft="15dp"
-                android:paddingTop="0dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="0dp"
-                android:text="Home"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                app:cornerRadius="0dp"
-                app:icon="@drawable/home_icon"
-                app:iconGravity="top"
-                app:iconPadding="0dp"
-                app:iconSize="23dp"
-                app:iconTint="@color/black"
-                tools:ignore="RtlCompat" />
-
-            <Button
-                android:id="@+id/btn_nav_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/background_navbar"
-                android:gravity="center|center_horizontal"
-                android:paddingLeft="15dp"
-                android:paddingTop="0dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="0dp"
-                android:text="Registro"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                app:cornerRadius="0dp"
-                app:icon="@drawable/register_client_icon"
-                app:iconGravity="top"
-                app:iconPadding="0dp"
-                app:iconSize="23dp"
-                app:iconTint="@color/black"
-                tools:ignore="RtlCompat" />
-
-            <Button
-                android:id="@+id/btn_nav_payment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/background_navbar"
-                android:gravity="center|center_horizontal"
-                android:paddingLeft="15dp"
-                android:paddingTop="0dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="0dp"
-                android:text="Cuotas"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                app:cornerRadius="0dp"
-                app:icon="@drawable/payment_icon"
-                app:iconGravity="top"
-                app:iconPadding="0dp"
-                app:iconSize="23dp"
-                app:iconTint="@color/black"
-                tools:ignore="RtlCompat" />
-
-            <Button
-                android:id="@+id/btn_nav_card"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/background_navbar"
-                android:gravity="center|center_horizontal"
-                android:paddingLeft="15dp"
-                android:paddingTop="0dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="0dp"
-                android:text="Carnet"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                app:cornerRadius="0dp"
-                app:icon="@drawable/emmit_card_icon"
-                app:iconGravity="top"
-                app:iconPadding="0dp"
-                app:iconSize="23dp"
-                app:iconTint="@color/black"
-                tools:ignore="RtlCompat" />
-
-            <Button
-                android:id="@+id/btn_nav_reports"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/background_navbar"
-                android:gravity="center|center_horizontal"
-                android:paddingLeft="15dp"
-                android:paddingTop="0dp"
-                android:paddingRight="15dp"
-                android:paddingBottom="0dp"
-                android:text="Reportes"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="12dp"
-                app:cornerRadius="0dp"
-                app:icon="@drawable/customers_icon"
-                app:iconGravity="top"
-                app:iconPadding="0dp"
-                app:iconSize="23dp"
-                app:iconTint="@color/black"
-                tools:ignore="RtlCompat" />
-
-
-        </LinearLayout>
-    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

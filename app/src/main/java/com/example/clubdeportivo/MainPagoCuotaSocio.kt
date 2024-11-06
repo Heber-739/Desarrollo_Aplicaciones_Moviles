@@ -1,28 +1,33 @@
 package com.example.clubdeportivo
 
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.clubdeportivo.Utils.Utils
-import com.example.clubdeportivo.database.Database
-import com.example.clubdeportivo.database.PagoCuotaSocio
+import com.example.clubdeportivo.database.PagoCuotaSocioYNoSocio
 import java.util.Calendar
+import java.util.Locale
 
 class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
     private var clienteDni: Int = 1111
-    private var precio: Double =0.0
-    private var metodoPago: String?=null
+    private val precioPorMes = 10000.00
+    private val precioDescuento =  precioPorMes * 0.90
+    private var precioFinal=precioDescuento
+    private var metodoPago: String="Pago efectivo"
+    private var fechaVencimientoFinal = ""
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.pago_de_cuota_socio)
-        val helper = Database
 
         //Botones del menu
         val btnHome = findViewById<Button>(R.id.btn_nav_home)
@@ -32,12 +37,30 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
         val btnReport = findViewById<Button>(R.id.btn_nav_reports)
         val btnPago = findViewById<Button>(R.id.btn_registrar_pago)
 
-        //Botones del RadioGroup y RadioButtons
-        val radioGroupMetodosPago = findViewById<RadioGroup>(R.id.rg_metodos_pago)
-        val radioButtonEfectivo = findViewById<RadioButton>(R.id.rb_efectivo)
-        val radioButtonTarjeta = findViewById<RadioButton>(R.id.rb_tarjeta)
-        val textViewPrecioEfectivo = findViewById<TextView>(R.id.tv_precio_efectivo)
-        val textViewPrecioTarjeta = findViewById<TextView>(R.id.tv_precio_tarjeta)
+        val tvPrecioEfectivo = findViewById<TextView>(R.id.tv_precio_efectivo)
+        val tvPrecioTarjeta = findViewById<TextView>(R.id.tv_precio_tarjeta)
+        val checkEfectivo = findViewById<CheckBox>(R.id.check_efectivo)
+        val checkTarjeta = findViewById<CheckBox>(R.id.check_tarjeta)
+
+        tvPrecioTarjeta.text = "$%.2f".format(precioPorMes)
+        tvPrecioEfectivo.text = "$%.2f".format(precioDescuento)
+
+        // Configuración para permitir solo una selección a la vez en los checkbox
+        checkEfectivo.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                checkTarjeta.isChecked = false
+                metodoPago= "Pago efectivo"
+                precioFinal= precioDescuento
+            }
+        }
+
+        checkTarjeta.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                checkEfectivo.isChecked = false
+                metodoPago= "Pago con tarjeta"
+                precioFinal= precioPorMes
+            }
+        }
 
         btnHome.setOnClickListener {
             Utils.cambioPantalla(this, MainMenu::class.java)
@@ -54,45 +77,30 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
         btnReport.setOnClickListener {
             Utils.cambioPantalla(this, CustomersRegister::class.java)
         }
-        btnPago.setOnClickListener {
-            Utils.cambioPantalla(this, MainReciboPago::class.java)
-        }
 
-
-        radioGroupMetodosPago.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.rb_efectivo -> {
-                    //  Pago en efectivo
-                    metodoPago = "Efectivo"
-                    precio = textViewPrecioEfectivo.text.toString().toDouble()
-
-                }
-
-                R.id.rb_tarjeta -> {
-                    // Pago con tarjeta
-                    metodoPago = "Tarjeta"
-                    precio = textViewPrecioTarjeta.text.toString().toDouble()
-
-                }
-            }
-
-        }
 
         // Registrar el pago
         btnPago.setOnClickListener {
-            val db = PagoCuotaSocio(this)
+            val db = PagoCuotaSocioYNoSocio(this)
 
             if (metodoPago != null) {
                 val fechaActual = Calendar.getInstance().timeInMillis
 
-                //Calcula la fecha de vencimiento
-                val calendar = Calendar.getInstance()
-                calendar.timeInMillis = fechaActual
-                calendar.add(Calendar.DAY_OF_YEAR, 30)
-                val vencimiento = calendar.timeInMillis
+                //Fecha de vencimiento segun los dias seleccionados
+                val calendar = Calendar.getInstance().apply {
+                    timeInMillis = fechaActual
+                    add(Calendar.DAY_OF_YEAR, 30)
+                }
+
+                val dateFormat = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val fechaVencimiento = dateFormat.format(calendar.time)
+                fechaVencimientoFinal= fechaVencimiento
+
+                val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val fechaActualFormateada = formatoFecha.format(fechaActual)
 
                 // Inserta en la base de datos
-                db.registrarPago(clienteDni, precio, metodoPago!!, fechaActual, vencimiento)
+                db.registrarPago(clienteDni, precioFinal, metodoPago!!, fechaActualFormateada, fechaVencimiento)
 
                 val modalFragment = ModalFragment.newInstance(
                     title = "Pago Registrado!",
@@ -101,15 +109,26 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                     btnSuccess = "Si, imprimirlo"
                 )
                 modalFragment.show(supportFragmentManager, "ModalFragment")
-
-            } else {
-
             }
         }
-
     }
 
     override fun onModalResult(success: Boolean) {
-        TODO("Not yet implemented")
+        if (success) {
+            // Crear el Intent para la actividad de impresión
+            val intent = Intent(this, MainReciboPago::class.java)
+
+            // Pasar los datos necesarios
+            intent.putExtra("ES_SOCIO",true)  // true o false dependiendo de si es socio o no
+            intent.putExtra("FECHA_VENCIMIENTO", fechaVencimientoFinal)
+            intent.putExtra("METODO_PAGO", metodoPago)
+            intent.putExtra("PRECIO_FINAL", precioFinal)
+
+            startActivity(intent)
+        } else {
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+        }
+
     }
 }
