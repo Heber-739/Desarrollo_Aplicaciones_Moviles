@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, 1) {
+
+
+
     companion object {
 
         private const val DATABASE_NAME = "ClubDeportivo.db"
@@ -38,6 +41,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_FECHA_PAGO = "fecha_pago"
         const val COLUMN_METODO_PAGO = "metodo_pago"
         const val COLUMN_DIAS_ACCESO = "dias_acceso"
+
     }
 
     override fun onCreate(db: SQLiteDatabase?) {

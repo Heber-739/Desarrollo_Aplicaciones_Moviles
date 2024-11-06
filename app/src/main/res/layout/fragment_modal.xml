@@ -54,51 +54,35 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="45dp"
                 android:orientation="horizontal"
                 android:padding="1dp">
 
                 <Button
                     android:id="@+id/btnReject"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:hapticFeedbackEnabled="false"
-                    android:includeFontPadding="false"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:paddingTop="12.5dp"
-                    android:paddingBottom="12.5dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="5dp"
                     android:text="Cancel"
                     android:textColor="@color/blue_btn"
-                    android:textColorLink="@color/white"
+                    android:backgroundTint="@color/white"
                     app:cornerRadius="10dp"
-                    app:iconPadding="0dp"
                     app:strokeColor="@color/blue_btn"
                     app:strokeWidth="1.5dp" />
 
                 <Button
                     android:id="@+id/btnSuccess"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="4dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/blue_btn"
-                    android:hapticFeedbackEnabled="false"
-                    android:includeFontPadding="false"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:paddingLeft="29dp"
-                    android:paddingTop="12.5dp"
-                    android:paddingRight="29dp"
-                    android:paddingBottom="12.5dp"
+                    android:layout_marginStart="4dp"
+                    android:padding="5dp"
                     android:text="Success"
                     android:textColor="@color/white"
-                    android:textColorLink="@color/white"
-                    app:cornerRadius="10dp"
-                    app:iconPadding="0dp" />
+                    android:backgroundTint="@color/blue_btn"
+                    app:cornerRadius="10dp" />
 
             </LinearLayout>
         </LinearLayout>
