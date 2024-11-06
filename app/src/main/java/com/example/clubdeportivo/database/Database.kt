@@ -20,6 +20,7 @@ class Database (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         private const val COLUMN_FECHA_VENC_PAGO = "fecha_venc_pago"
         private const val COLUMN_NRO_AVATAR = "nro_avatar"
 
+
         // Tabla de Pagos
         const val TABLE_PAGO = "Pagos"
         private const val COLUMN_PAGO_ID = "id"

@@ -39,7 +39,7 @@ class ModalFragment : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_modal, container, false)
-        // Inflate the layout for this fragment
+
         val title = view.findViewById<TextView>(R.id.textTitle)
         title.text = arguments?.getString(KEY_TITLE)
 
@@ -47,10 +47,16 @@ class ModalFragment : DialogFragment() {
         text.text = arguments?.getString(KEY_TEXT)
 
         val btnReject = view.findViewById<Button>(R.id.btnReject)
-        btnReject.text = arguments?.getString(BTN_REJECT)
-        btnReject.setOnClickListener {
-            listener?.onModalResult(false)
-            dismiss()
+        val btnRejectText = arguments?.getString(BTN_REJECT)
+
+        if (btnRejectText.isNullOrEmpty()) {
+            btnReject.visibility = View.GONE
+        } else {
+            btnReject.text = btnRejectText
+            btnReject.setOnClickListener {
+                listener?.onModalResult(false)
+                dismiss()
+            }
         }
 
         val btnSuccess = view.findViewById<Button>(R.id.btnSuccess)
@@ -59,6 +65,7 @@ class ModalFragment : DialogFragment() {
             listener?.onModalResult(true)
             dismiss()
         }
+
         return view
     }
 
@@ -68,16 +75,19 @@ class ModalFragment : DialogFragment() {
     }
 
     companion object {
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(title: String, text: String, btnReject:String,btnSuccess:String) =
-            ModalFragment().apply {
-                arguments = Bundle().apply {
-                    putString(KEY_TITLE , title)
-                    putString(KEY_TEXT , text)
-                    putString(BTN_REJECT , btnReject)
-                    putString(BTN_SUCCESS , btnSuccess)
-                }
+        fun newInstance(
+            title: String,
+            text: String,
+            btnSuccess: String,
+            btnReject: String? = null
+        ) = ModalFragment().apply {
+            arguments = Bundle().apply {
+                putString(KEY_TITLE , title)
+                putString(KEY_TEXT , text)
+                putString(BTN_SUCCESS , btnSuccess)
+                btnReject?.let { putString(BTN_REJECT, it) }
             }
+        }
     }
 }
