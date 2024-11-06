@@ -1,27 +1,32 @@
 package com.example.clubdeportivo
 
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.Spinner
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.clubdeportivo.Utils.Utils
-import com.example.clubdeportivo.database.PagoCuotaSocio
+import com.example.clubdeportivo.database.PagoCuotaSocioYNoSocio
 import java.util.Calendar
+import java.util.Locale
 
 class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
 
     private val precioPorDia = 1200.0
     private val precioDescuento =  precioPorDia * 0.90
     private val precioFinal=0.00
-    private var metodoPago: String?=null
+    private var metodoPago: String = "Pago efectivo"
+    private var fechaVencimientoFinal = ""
     private var clienteDni: Int = 1111
 
+        @SuppressLint("MissingInflatedId")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             enableEdgeToEdge()
@@ -33,7 +38,7 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
             val btnCarnet = findViewById<Button>(R.id.btn_nav_card)
             val btnReport = findViewById<Button>(R.id.btn_nav_reports)
             val btnPago = findViewById<Button>(R.id.btn_registrar_pago)
-            val spinnerDias = findViewById<Spinner>(R.id.spinner_dias)
+            val editTextDias = findViewById<EditText>(R.id.editText_dias)
             val tvPrecioTarjeta = findViewById<TextView>(R.id.tv_precio_tarjeta)
             val tvPrecioEfectivo = findViewById<TextView>(R.id.tv_precio_efectivo)
             val checkEfectivo = findViewById<CheckBox>(R.id.check_efectivo)
@@ -42,40 +47,21 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
             tvPrecioTarjeta.text = "$%.2f".format(precioPorDia)
             tvPrecioEfectivo.text = "$%.2f".format(precioDescuento)
 
-            //Selector de dias
-            val adapter = ArrayAdapter.createFromResource(
-                this,
-                R.array.dias_acceso_array,
-                android.R.layout.simple_spinner_item
-            ).apply {
-                setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            }
-            spinnerDias.adapter = adapter
+            editTextDias.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            spinnerDias.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                    val diasSeleccionados = parent.getItemAtPosition(position).toString()
-                    if (diasSeleccionados == "Seleccione cantidad de días de acceso") {
-                        val modalFragment = ModalFragment.newInstance(
-                            title = "Selección inválida",
-                            text = "Por favor, seleccione una cantidad válida de días de acceso.",
-                            btnSuccess = "Aceptar"
-                        )
-                        modalFragment.show(supportFragmentManager, "ModalFragment")
-                    } else {
-                        // Calcula el precio en función de los días seleccionados
-                        val cantidadDias = diasSeleccionados.toIntOrNull() ?: 1
-                        val precioTotal = cantidadDias * precioPorDia
-                        val precioTotalDescuento = precioTotal *0.90
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
+                override fun afterTextChanged(s: Editable?) {
+                    val diasIngresados = s.toString().toIntOrNull()
+                    if (diasIngresados != null && diasIngresados > 0) {
+                        val precioTotal = diasIngresados * precioPorDia
+                        val precioTotalDescuento = precioTotal * 0.90
                         tvPrecioTarjeta.text = "$%.2f".format(precioTotal)
                         tvPrecioEfectivo.text = "$%.2f".format(precioTotalDescuento)
-
                     }
                 }
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                }
-            }
+            })
 
             // Configuración para permitir solo una selección a la vez en los checkbox
             checkEfectivo.setOnCheckedChangeListener { _, isChecked ->
@@ -88,7 +74,7 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
             checkTarjeta.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     checkEfectivo.isChecked = false
-                    metodoPago= "Pago efectivo"
+                    metodoPago= "Pago con tarjeta"
                 }
             }
 
@@ -113,19 +99,27 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
 
             // Registrar el pago
             btnPago.setOnClickListener {
-                val db = PagoCuotaSocio(this)
 
+                val db = PagoCuotaSocioYNoSocio(this)
                 if (metodoPago != null) {
+                    val diasSeleccionados = editTextDias.text.toString().toIntOrNull() ?: 0 // Convierte el texto a entero o usa 0 si está vacío
                     val fechaActual = Calendar.getInstance().timeInMillis
 
-                    //Calcula la fecha de vencimiento
-                    val calendar = Calendar.getInstance()
-                    calendar.timeInMillis = fechaActual
-                    calendar.add(Calendar.DAY_OF_YEAR, 30)
-                    val vencimiento = calendar.timeInMillis
+                    //Fecha de vencimiento segun los dias seleccionados
+                    val calendar = Calendar.getInstance().apply {
+                        timeInMillis = fechaActual
+                        add(Calendar.DAY_OF_YEAR, diasSeleccionados)
+                    }
+
+                    val dateFormat = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val fechaVencimiento = dateFormat.format(calendar.time)
+                    fechaVencimientoFinal= fechaVencimiento
+
+                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val fechaActualFormateada = formatoFecha.format(fechaActual)
 
                     // Inserta en la base de datos
-                    db.registrarPago(clienteDni, precioFinal, metodoPago!!, fechaActual, vencimiento)
+                    db.registrarPago(clienteDni, precioFinal, metodoPago!!, fechaActualFormateada, fechaVencimiento)
 
                     val modalFragment = ModalFragment.newInstance(
                         title = "Pago Registrado!",
@@ -136,13 +130,23 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                     modalFragment.show(supportFragmentManager, "ModalFragment")
                 }
             }
-
-    }
-
+        }
     override fun onModalResult(success: Boolean) {
+        if (success) {
+            // Crear el Intent para la actividad de impresión
+            val intent = Intent(this, MainReciboPago::class.java)
 
+            // Pasar los datos necesarios
+            intent.putExtra("ES_SOCIO",false)  // true o false dependiendo de si es socio o no
+            intent.putExtra("FECHA_VENCIMIENTO", fechaVencimientoFinal)
+            intent.putExtra("METODO_PAGO", metodoPago)
+            intent.putExtra("PRECIO_FINAL", precioFinal)
+
+            startActivity(intent)
+        } else {
+            val intent = Intent(this, MainMenu::class.java)
+            startActivity(intent)
+        }
 
     }
-
-
 }
