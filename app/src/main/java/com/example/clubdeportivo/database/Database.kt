@@ -19,6 +19,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_USERS_NAME = "nombre_usuario"
         const val COLUMN_USERS_PASS = "password_usuario"
         const val COLUMN_USERS_ROL = "rol_id"
+        const val COLUMN_USER_NRO_AVATAR = "nro_avatar"
 
         // Tabla de Clientes
         private const val TABLE_CLIENTES = "Clientes"
@@ -53,7 +54,8 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
                 $COLUMN_USERS_EMAIL TEXT,
                 $COLUMN_USERS_NAME TEXT,
                 $COLUMN_USERS_PASS TEXT,
-                $COLUMN_USERS_ROL INTEGER
+                $COLUMN_USERS_ROL INTEGER,
+                $COLUMN_USER_NRO_AVATAR INTEGER DEFAULT 0
             );
         """
         db?.execSQL(createTableUsuarios)

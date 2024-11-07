@@ -1,34 +1,34 @@
 package com.example.clubdeportivo
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import com.example.clubdeportivo.Utils.UserAvatar
 import com.example.clubdeportivo.Utils.Utils
+import com.example.clubdeportivo.database.Database
 
-class MainMenu : AppCompatActivity() {
+class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
+
+    private lateinit var userName: String;
+    private lateinit var userEmail: String;
+    private var nroAvatar: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Obtén los datos enviados desde la actividad anterior
-        val userName = intent.getStringExtra("USER_NAME")
-        val userEmail = intent.getStringExtra("USER_EMAIL")
-
-        val profileCont = findViewById<FrameLayout>(R.id.profileCont)
-
         setContentView(R.layout.activity_main_menu)
 
-        // Referencias a los TextView en los que mostrar el nombre y email
-        val nameTextView = findViewById<TextView>(R.id.txt_user_name)
-        val emailTextView = findViewById<TextView>(R.id.txt_user_email)
-
-        // Asigna los valores a los TextView
-        nameTextView.text = userName ?: "Nombre no disponible"
-        emailTextView.text = userEmail ?: "Email no disponible"
-
+        this.getUserInfo()
 
         val buttonUsu = findViewById<Button>(R.id.btn_register_user)
         val buttonSalir = findViewById<Button>(R.id.btn_exit)
@@ -48,6 +48,54 @@ class MainMenu : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if(UserAvatar.changeAvatar()){
+        this.showAvatar()
+        }
+    }
+
+    @SuppressLint("DiscouragedApi")
+    private fun showAvatar(){
+        this.nroAvatar = UserAvatar.getAvatar()
+
+        val addIcon = findViewById<ImageView>(R.id.addIcon)
+        val profileImage = findViewById<ImageView>(R.id.profilePhoto)
+
+        val drawableId = resources.getIdentifier("avatar_${this.nroAvatar}", "drawable", packageName)
+        profileImage.setImageResource(drawableId)
+
+        if(this.nroAvatar ==0 ){
+            addIcon.isVisible = true
+            addIcon.setOnClickListener{
+                val intent = Intent(this, AvatarSelect::class.java)
+                intent.putExtra("USER_EMAIL", this.userEmail)
+                intent.putExtra("TABLE", Database.TABLE_USERS)
+                startActivity(intent)
+            }
+        } else {
+            addIcon.isVisible = false
+        }
+    }
+
+
+    private fun getUserInfo(){
+
+            this.userName = intent.getStringExtra("USER_NAME") ?: "Nombre no disponible"
+            this.userEmail = intent.getStringExtra("USER_EMAIL") ?: "Email no disponible"
+
+
+        val nameTextView = findViewById<TextView>(R.id.txt_user_name)
+        val emailTextView = findViewById<TextView>(R.id.txt_user_email)
+
+        nameTextView.text = this.userName
+        emailTextView.text = this.userEmail
+
+    }
+
+    override fun onModalResult(success: Boolean) {
+        TODO("Not yet implemented")
+    }
 
 
 }
