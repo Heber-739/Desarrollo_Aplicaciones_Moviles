@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:fontFamily="sans-serif-black"
-            android:text="Nombre"
+            android:text="Apellido y Nombre"
             android:textColor="@color/black"
             android:textSize="12dp" />
 
@@ -63,10 +63,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/borde_redondo"
-            android:hint="Nombre"
-            android:inputType="text"
+            android:hint="Nombre Completo"
             android:textColor="@android:color/darker_gray"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:inputType="textNoSuggestions"
+            android:importantForAutofill="noExcludeDescendants"/>
 
         <TextView
             android:id="@+id/txtClienteEmail"
