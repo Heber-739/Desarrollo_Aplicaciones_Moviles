@@ -1,5 +1,6 @@
 package com.example.clubdeportivo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -11,36 +12,23 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.example.clubdeportivo.Utils.UserAvatar
 import com.example.clubdeportivo.Utils.Utils
 import com.example.clubdeportivo.database.Database
 
-class MainMenu : AppCompatActivity() {
+class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
 
     private lateinit var userName: String;
     private lateinit var userEmail: String;
+    private var nroAvatar: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Obtén los datos enviados desde la actividad anterior
-        this.userName = intent.getStringExtra("USER_NAME").toString()
-        this.userEmail = intent.getStringExtra("USER_EMAIL").toString()
-
-        this.getUserInfo(this.userEmail)
-
-
-
         setContentView(R.layout.activity_main_menu)
 
-        // Referencias a los TextView en los que mostrar el nombre y email
-        val nameTextView = findViewById<TextView>(R.id.txt_user_name)
-        val emailTextView = findViewById<TextView>(R.id.txt_user_email)
-
-        // Asigna los valores a los TextView
-        nameTextView.text = this.userName ?: "Nombre no disponible"
-        emailTextView.text = this.userEmail ?: "Email no disponible"
-
+        this.getUserInfo()
 
         val buttonUsu = findViewById<Button>(R.id.btn_register_user)
         val buttonSalir = findViewById<Button>(R.id.btn_exit)
@@ -60,35 +48,54 @@ class MainMenu : AppCompatActivity() {
         }
     }
 
-    private fun getUserInfo(email:String){
-        // Aquí deberías añadir la lógica para verificar el usuario en la base de datos
-        val dbHelper = Database(this)
-        val db = dbHelper.readableDatabase
-
-        val query = "SELECT * FROM ${Database.TABLE_USERS} WHERE email_usuario = '$email'"
-        val cursor = db.rawQuery(query, null)
-
-        if (cursor.moveToFirst()) {
-            val nro_avatar = cursor.getInt(cursor.getColumnIndexOrThrow("nro_avatar"))
-
-            if(nro_avatar==1){
-            val addIcon = findViewById<ImageView>(R.id.addIcon)
-                addIcon.isVisible = true
-                addIcon.setOnClickListener{
-
-                }
-
-            }
-            val profileCont = findViewById<FrameLayout>(R.id.profileCont)
-
-
-        } else {
-            val modal = ModalFragment.newInstance("Error!!", "Usuario no encontrado", "OK")
-            modal.show(supportFragmentManager, "ModalFragment")
+    override fun onResume() {
+        super.onResume()
+        if(UserAvatar.changeAvatar()){
+        this.showAvatar()
         }
-        cursor.close()
     }
 
+    @SuppressLint("DiscouragedApi")
+    private fun showAvatar(){
+        this.nroAvatar = UserAvatar.getAvatar()
+
+        val addIcon = findViewById<ImageView>(R.id.addIcon)
+        val profileImage = findViewById<ImageView>(R.id.profilePhoto)
+
+        val drawableId = resources.getIdentifier("avatar_${this.nroAvatar}", "drawable", packageName)
+        profileImage.setImageResource(drawableId)
+
+        if(this.nroAvatar ==0 ){
+            addIcon.isVisible = true
+            addIcon.setOnClickListener{
+                val intent = Intent(this, AvatarSelect::class.java)
+                intent.putExtra("USER_EMAIL", this.userEmail)
+                intent.putExtra("TABLE", Database.TABLE_USERS)
+                startActivity(intent)
+            }
+        } else {
+            addIcon.isVisible = false
+        }
+    }
+
+
+    private fun getUserInfo(){
+
+            this.userName = intent.getStringExtra("USER_NAME") ?: "Nombre no disponible"
+            this.userEmail = intent.getStringExtra("USER_EMAIL") ?: "Email no disponible"
+
+
+        val nameTextView = findViewById<TextView>(R.id.txt_user_name)
+        val emailTextView = findViewById<TextView>(R.id.txt_user_email)
+
+        nameTextView.text = this.userName
+        emailTextView.text = this.userEmail
+
+    }
+
+    override fun onModalResult(success: Boolean) {
+        TODO("Not yet implemented")
+    }
 
 
 }

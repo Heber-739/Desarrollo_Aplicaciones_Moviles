@@ -332,9 +332,7 @@
                         android:id="@+id/profilePhoto"
                         android:layout_width="42dp"
                         android:layout_height="42dp"
-                        android:layout_gravity="center"
-                        app:srcCompat="@drawable/avatar_0"
-                        tools:srcCompat="@drawable/avatar_0" />
+                        android:layout_gravity="center" />
 
                     <ImageView
                         android:id="@+id/addIcon"
@@ -342,7 +340,6 @@
                         android:layout_height="20dp"
                         android:layout_gravity="bottom|end"
                         android:elevation="10dp"
-                        android:visibility="gone"
                         app:srcCompat="@drawable/add"
                         tools:srcCompat="@drawable/add" />
 

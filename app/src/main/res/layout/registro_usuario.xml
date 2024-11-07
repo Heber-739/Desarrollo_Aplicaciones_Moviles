@@ -64,9 +64,10 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/borde_redondo"
             android:hint="Nombre Completo"
-            android:inputType="text"
             android:textColor="@android:color/darker_gray"
-            android:textSize="14dp" />
+            android:textSize="14dp"
+            android:inputType="textNoSuggestions"
+            android:importantForAutofill="noExcludeDescendants"/>
 
         <TextView
             android:id="@+id/txtClienteEmail"

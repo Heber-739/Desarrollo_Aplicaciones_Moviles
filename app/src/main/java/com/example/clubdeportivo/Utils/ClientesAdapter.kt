@@ -16,6 +16,8 @@ class ClienteAdapter(private val clientes: List<Clientes_mostrar>, private val l
         fun onItemClick(id: Int)
     }
 
+
+
     @SuppressLint("DiscouragedApi")
     class ClienteViewHolder(itemView: View, private val listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val txtName: TextView = itemView.findViewById(R.id.txt_names)

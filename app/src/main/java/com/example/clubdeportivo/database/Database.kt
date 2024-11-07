@@ -19,7 +19,7 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_USERS_NAME = "nombre_usuario"
         const val COLUMN_USERS_PASS = "password_usuario"
         const val COLUMN_USERS_ROL = "rol_id"
-        private val COLUMN_USER_NRO_AVATAR = "nro_avatar"
+        const val COLUMN_USER_NRO_AVATAR = "nro_avatar"
 
         // Tabla de Clientes
         private const val TABLE_CLIENTES = "Clientes"
