@@ -17,6 +17,8 @@ private const val BTN_SUCCESS = "btn_success"
 class ModalFragment : DialogFragment() {
 
     interface ModalListener {
+
+
         fun onModalResult(success: Boolean)
     }
 
