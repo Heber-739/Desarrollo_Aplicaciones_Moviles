@@ -22,15 +22,15 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         const val COLUMN_USER_NRO_AVATAR = "nro_avatar"
 
         // Tabla de Clientes
-        private const val TABLE_CLIENTES = "Clientes"
-        private const val COLUMN_CLIENTE_DNI = "dni"
-        private const val COLUMN_NOMBRE_CLIENTE = "nombre_cliente"
-        private const val COLUMN_EMAIL_CLIENTE = "email_cliente"
-        private const val COLUMN_FECHA_NAC = "fecha_nac"
-        private const val COLUMN_APTO_FISICO = "apto_fisico"
-        private const val COLUMN_TIPO_CLIENTE = "tipo_cliente"
-        private const val COLUMN_FECHA_VENC_PAGO = "fecha_venc_pago"
-        private const val COLUMN_NRO_AVATAR = "nro_avatar"
+        const val TABLE_CLIENTES = "Clientes"
+        const val COLUMN_CLIENTE_DNI = "dni"
+        const val COLUMN_NOMBRE_CLIENTE = "nombre_cliente"
+        const val COLUMN_EMAIL_CLIENTE = "email_cliente"
+        const val COLUMN_FECHA_NAC = "fecha_nac"
+        const val COLUMN_APTO_FISICO = "apto_fisico"
+        const val COLUMN_TIPO_CLIENTE = "tipo_cliente"
+        const val COLUMN_FECHA_VENC_PAGO = "fecha_venc_pago"
+        const val COLUMN_NRO_AVATAR = "nro_avatar"
 
 
         // Tabla de Pagos
@@ -96,4 +96,6 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db?.execSQL("DROP TABLE IF EXISTS $TABLE_USERS")
         onCreate(db)
     }
+
+
 }

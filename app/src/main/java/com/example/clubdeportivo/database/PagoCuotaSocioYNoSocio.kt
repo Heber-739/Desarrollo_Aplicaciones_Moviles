@@ -1,6 +1,6 @@
 package com.example.clubdeportivo.database
 
-import android.content.ContentValues
+import  android.content.ContentValues
 import android.content.Context
 import com.example.clubdeportivo.database.Database.Companion.COLUMN_CLIENTE_DNI_FK
 import com.example.clubdeportivo.database.Database.Companion.COLUMN_FECHA_PAGO
