@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.clubdeportivo.Utils.Utils
@@ -21,16 +22,22 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
 
     private val precioPorDia = 1200.0
     private val precioDescuento =  precioPorDia * 0.90
-    private val precioFinal=0.00
+    private var precioTotal=0.00
     private var metodoPago: String = "Pago efectivo"
     private var fechaVencimientoFinal = ""
-    private var clienteDni: Int = 1111
+    lateinit var nombreCompleto: String
+    lateinit var clienteDni: String
+
 
         @SuppressLint("MissingInflatedId")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             enableEdgeToEdge()
             setContentView(R.layout.pago_de_cuota_nosocio)
+
+            // Los datos obtenidos desde Registro de cliente
+            nombreCompleto = intent.getStringExtra("nombreCompleto")?: ""
+            clienteDni = intent.getStringExtra("dni")?: ""
 
             val btnHome = findViewById<Button>(R.id.btn_nav_home)
             val btnRegis = findViewById<Button>(R.id.btn_nav_register)
@@ -55,10 +62,14 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                 override fun afterTextChanged(s: Editable?) {
                     val diasIngresados = s.toString().toIntOrNull()
                     if (diasIngresados != null && diasIngresados > 0) {
-                        val precioTotal = diasIngresados * precioPorDia
+                        precioTotal = diasIngresados * precioPorDia
                         val precioTotalDescuento = precioTotal * 0.90
                         tvPrecioTarjeta.text = "$%.2f".format(precioTotal)
                         tvPrecioEfectivo.text = "$%.2f".format(precioTotalDescuento)
+                    }
+                    else {
+                        tvPrecioTarjeta.text = "$%.2f".format(precioPorDia)
+                        tvPrecioEfectivo.text = "$%.2f".format(precioPorDia * 0.90)
                     }
                 }
             })
@@ -68,6 +79,7 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                 if (isChecked) {
                     checkTarjeta.isChecked = false
                     metodoPago= "Pago efectivo"
+                    precioTotal *= 0.90
                 }
             }
 
@@ -93,54 +105,63 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
             btnReport.setOnClickListener{
                 Utils.cambioPantalla(this, CustomersRegister::class.java)
             }
-            btnPago.setOnClickListener{
-                Utils.cambioPantalla(this, MainReciboPago::class.java)
-            }
 
             // Registrar el pago
             btnPago.setOnClickListener {
-
                 val db = PagoCuotaSocioYNoSocio(this)
-                if (metodoPago != null) {
-                    val diasSeleccionados = editTextDias.text.toString().toIntOrNull() ?: 0 // Convierte el texto a entero o usa 0 si está vacío
-                    val fechaActual = Calendar.getInstance().timeInMillis
+                val diasIngresados = editTextDias.text.toString().toIntOrNull() ?: 0 // Convierte el texto a entero o usa 0 si está vacío
+                if (diasIngresados<=0){
+                    Toast.makeText(this, "Ingrese cantidad de dias", Toast.LENGTH_SHORT).show()
 
-                    //Fecha de vencimiento segun los dias seleccionados
-                    val calendar = Calendar.getInstance().apply {
-                        timeInMillis = fechaActual
-                        add(Calendar.DAY_OF_YEAR, diasSeleccionados)
+                    return@setOnClickListener
                     }
+                else {
+                        val fechaActual = Calendar.getInstance().timeInMillis
 
-                    val dateFormat = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    val fechaVencimiento = dateFormat.format(calendar.time)
-                    fechaVencimientoFinal= fechaVencimiento
+                        //Fecha de vencimiento segun los dias seleccionados
+                        val calendar = Calendar.getInstance().apply {
+                            timeInMillis = fechaActual
+                            add(Calendar.DAY_OF_YEAR, diasIngresados)
+                        }
 
-                    val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                    val fechaActualFormateada = formatoFecha.format(fechaActual)
+                        val dateFormat =
+                            java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                        val fechaVencimiento = dateFormat.format(calendar.time)
+                        fechaVencimientoFinal = fechaVencimiento
 
-                    // Inserta en la base de datos
-                    db.registrarPago(clienteDni, precioFinal, metodoPago!!, fechaActualFormateada, fechaVencimiento)
+                        val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                        val fechaActualFormateada = formatoFecha.format(fechaActual)
 
-                    val modalFragment = ModalFragment.newInstance(
-                        title = "Pago Registrado!",
-                        text = "¿Desea imprimir el recibo el pago?",
-                        btnReject = "No, ir al home",
-                        btnSuccess = "Si, imprimirlo"
-                    )
-                    modalFragment.show(supportFragmentManager, "ModalFragment")
-                }
+                        // Inserta en la base de datos
+                        db.registrarPago(
+                            clienteDni.toIntOrNull() ?: 0,
+                            precioTotal,
+                            metodoPago,
+                            fechaActualFormateada,
+                            fechaVencimiento
+                        )
+
+                        val modalFragment = ModalFragment.newInstance(
+                            title = "Pago Registrado!",
+                            text = "¿Desea imprimir el recibo el pago?",
+                            btnReject = "No, ir al home",
+                            btnSuccess = "Si, imprimirlo"
+                        )
+                        modalFragment.show(supportFragmentManager, "ModalFragment")
+                    }
             }
         }
+
     override fun onModalResult(success: Boolean) {
         if (success) {
-            // Crear el Intent para la actividad de impresión
             val intent = Intent(this, MainReciboPago::class.java)
 
             // Pasar los datos necesarios
+            intent.putExtra("NOMBRE_CLIENTE", nombreCompleto)
             intent.putExtra("ES_SOCIO",false)  // true o false dependiendo de si es socio o no
             intent.putExtra("FECHA_VENCIMIENTO", fechaVencimientoFinal)
             intent.putExtra("METODO_PAGO", metodoPago)
-            intent.putExtra("PRECIO_FINAL", precioFinal)
+            intent.putExtra("PRECIO_FINAL", precioTotal)
 
             startActivity(intent)
         } else {

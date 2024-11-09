@@ -15,12 +15,13 @@ import java.util.Calendar
 import java.util.Locale
 
 class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
-    private var clienteDni: Int = 1111
     private val precioPorMes = 10000.00
     private val precioDescuento =  precioPorMes * 0.90
     private var precioFinal=precioDescuento
     private var metodoPago: String="Pago efectivo"
     private var fechaVencimientoFinal = ""
+    lateinit var nombreCompleto: String
+    lateinit var clienteDni: String
 
 
     @SuppressLint("MissingInflatedId")
@@ -28,6 +29,10 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.pago_de_cuota_socio)
+
+        // Los datos obtenidos desde Registro de cliente
+        nombreCompleto = intent.getStringExtra("nombreCompleto")?: ""
+        clienteDni = intent.getStringExtra("dni")?: ""
 
         //Botones del menu
         val btnHome = findViewById<Button>(R.id.btn_nav_home)
@@ -83,7 +88,6 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
         btnPago.setOnClickListener {
             val db = PagoCuotaSocioYNoSocio(this)
 
-            if (metodoPago != null) {
                 val fechaActual = Calendar.getInstance().timeInMillis
 
                 //Fecha de vencimiento segun los dias seleccionados
@@ -100,7 +104,7 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                 val fechaActualFormateada = formatoFecha.format(fechaActual)
 
                 // Inserta en la base de datos
-                db.registrarPago(clienteDni, precioFinal, metodoPago!!, fechaActualFormateada, fechaVencimiento)
+                db.registrarPago(clienteDni.toIntOrNull() ?: 0, precioFinal, metodoPago, fechaActualFormateada, fechaVencimiento)
 
                 val modalFragment = ModalFragment.newInstance(
                     title = "Pago Registrado!",
@@ -109,7 +113,7 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                     btnSuccess = "Si, imprimirlo"
                 )
                 modalFragment.show(supportFragmentManager, "ModalFragment")
-            }
+
         }
     }
 
@@ -119,6 +123,7 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
             val intent = Intent(this, MainReciboPago::class.java)
 
             // Pasar los datos necesarios
+            intent.putExtra("NOMBRE_CLIENTE", nombreCompleto)
             intent.putExtra("ES_SOCIO",true)  // true o false dependiendo de si es socio o no
             intent.putExtra("FECHA_VENCIMIENTO", fechaVencimientoFinal)
             intent.putExtra("METODO_PAGO", metodoPago)
