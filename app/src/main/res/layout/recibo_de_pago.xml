@@ -40,7 +40,6 @@
             android:id="@+id/txt_customer_names"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre Apellido"
             android:textAlignment="viewStart"
             android:textColor="@color/black"
             android:textSize="20dp"
