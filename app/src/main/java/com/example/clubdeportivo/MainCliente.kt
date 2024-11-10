@@ -136,10 +136,8 @@ class MainCliente : AppCompatActivity(), ModalFragment.ModalListener{
                     putExtra("fechaNacimiento", fechaNacimiento)
                     putExtra("apto", textoSeleccionadoApto)
                 }
-
                 startActivity(intent)
                 finish()
-
             } else {
                 val modalFragmentError = ModalFragment.newInstance(
                     title = "Ups!",
@@ -170,12 +168,8 @@ class MainCliente : AppCompatActivity(), ModalFragment.ModalListener{
             Utils.cambioPantalla(this, CustomersRegister::class.java)
         }
 
-
-
-
     }
     override fun onModalResult(success: Boolean) {
         shouldNavigate = success
-
     }
 }

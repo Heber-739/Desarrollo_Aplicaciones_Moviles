@@ -3,11 +3,10 @@ package com.example.clubdeportivo
 import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clubdeportivo.adapters.BuscarClienteAdapter
+import com.example.clubdeportivo.Utils.BuscarClienteAdapter
 import com.example.clubdeportivo.models.Cliente
 import com.example.clubdeportivo.database.Database
 
@@ -20,26 +19,35 @@ class BuscarCliente : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buscar_cliente)
 
+        // Obtén los datos enviados desde la actividad anterior
+        val proceso = intent.getStringExtra("proceso")
+
         clienteAdapter = BuscarClienteAdapter(emptyList()) { cliente ->
-            // Recuperamos el DNI del cliente desde el objeto seleccionado
+
             val dniCliente = cliente.dni.toString()
             val nombreCliente = cliente.nombre
-            val tipoCliente = cliente.tipoCliente
+            val tipoCliente = cliente.tipoCliente // Socio o No socio
+
+
 
             // Declaramos el Intent antes del if-else para poder acceder fuera del bloque condicional
-            val intentPagoCuota: Intent
+            val intent: Intent
 
-            // Asignamos el Intent según el tipo de cliente
-            if (cliente.tipoCliente == "Socio") {
-                intentPagoCuota = Intent(this, MainPagoCuotaSocio::class.java)
+            if (proceso == "pago") {
+                // Asignamos el Intent según el tipo de cliente
+                if (tipoCliente == "Socio") {
+                    intent = Intent(this, MainPagoCuotaSocio::class.java)
+                } else {
+                    intent = Intent(this, MainPagoCuotaNoSocio::class.java)
+                }
             } else {
-                intentPagoCuota = Intent(this, MainPagoCuotaNoSocio::class.java)
+                intent = Intent(this, CustomerCard::class.java)
             }
-
             // Agregamos los extras y lanzamos la actividad
-            intentPagoCuota.putExtra("dni", dniCliente)
-            intentPagoCuota.putExtra("nombreCompleto", nombreCliente)
-            startActivity(intentPagoCuota)
+            intent.putExtra("dni", dniCliente)
+            intent.putExtra("nombreCompleto", nombreCliente)
+            intent.putExtra("tipoCliente", tipoCliente)
+            startActivity(intent)
         }
 
 
