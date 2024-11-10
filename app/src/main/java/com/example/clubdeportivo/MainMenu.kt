@@ -31,11 +31,19 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
         this.getUserInfo()
 
         val buttonUsu = findViewById<Button>(R.id.btn_register_user)
+        val buttonPago = findViewById<Button>(R.id.btn_payment)
         val buttonSalir = findViewById<Button>(R.id.btn_exit)
         val buttonReCliente = findViewById<Button>(R.id.btn_customers_report)
         val btnCarnet = findViewById<Button>(R.id.btn_emmit_card)
         buttonUsu.setOnClickListener {
             Utils.cambioPantalla(this,MainCliente::class.java)
+        }
+        buttonPago.setOnClickListener {
+            //Utils.cambioPantalla(this,BuscarCliente::class.java)
+            val intent = Intent(this, BuscarCliente::class.java)
+            intent.putExtra("PROCESO", "pago")  // Pasa el nombre del usuario
+            startActivity(intent)
+
         }
         buttonSalir.setOnClickListener{
             Utils.cambioPantalla(this,MainActivity::class.java)
