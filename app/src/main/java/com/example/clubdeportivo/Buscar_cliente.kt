@@ -20,7 +20,7 @@ class BuscarCliente : AppCompatActivity() {
         setContentView(R.layout.activity_buscar_cliente)
 
         // Obtén los datos enviados desde la actividad anterior
-        val proceso = intent.getStringExtra("proceso")
+        val proceso = intent.getStringExtra("PROCESO")
 
         clienteAdapter = BuscarClienteAdapter(emptyList()) { cliente ->
 
