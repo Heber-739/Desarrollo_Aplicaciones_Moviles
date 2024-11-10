@@ -7,7 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.clubdeportivo.Utils.UserAvatar
+import com.example.clubdeportivo.Utils.User
 import com.example.clubdeportivo.Utils.Utils
 import com.example.clubdeportivo.database.Database
 
@@ -74,7 +74,9 @@ class MainActivity : AppCompatActivity(), ModalFragment.ModalListener {
                 val userEmail = cursor.getString(cursor.getColumnIndexOrThrow("email_usuario"))
                 val nro_avatar = cursor.getInt(cursor.getColumnIndexOrThrow("nro_avatar"))
 
-                UserAvatar.setAvatar(nro_avatar)
+                User.avatar = nro_avatar
+                User.name = userName
+                User.email = userEmail
                 // Si hay un usuario, iniciar sesión
                 Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
 
