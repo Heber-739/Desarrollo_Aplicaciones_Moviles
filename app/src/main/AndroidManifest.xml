@@ -18,9 +18,6 @@
             android:label="@string/title_activity_buscar_cliente"
             android:theme="@style/Theme.ClubDeportivo" />
         <activity
-            android:name=".buscar_cliente"
-            android:exported="false" />
-        <activity
             android:name=".AvatarSelect"
             android:exported="false"
             android:theme="@style/Theme.ClubDeportivo" />
