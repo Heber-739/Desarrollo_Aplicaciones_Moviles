@@ -13,7 +13,7 @@ import com.example.clubdeportivo.R
 class ClienteAdapter(private val clientes: List<Clientes_mostrar>, private val listener: OnItemClickListener) : RecyclerView.Adapter<ClienteAdapter.ClienteViewHolder>() {
 
     interface OnItemClickListener {
-        fun onItemClick(id: Int)
+        fun onItemClick(id: String)
     }
 
 
@@ -31,7 +31,7 @@ class ClienteAdapter(private val clientes: List<Clientes_mostrar>, private val l
 
             // Asigna el listener al itemView y pasa el ID único del cliente
             itemView.setOnClickListener {
-                listener.onItemClick(cliente.id)
+                listener.onItemClick(cliente.email)
             }
         }
 

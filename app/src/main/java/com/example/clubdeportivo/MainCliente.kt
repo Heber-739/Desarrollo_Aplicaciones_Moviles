@@ -118,7 +118,7 @@ class MainCliente : AppCompatActivity(), ModalFragment.ModalListener{
                 put(Database.COLUMN_FECHA_NAC, fechaNacimiento)
                 put(Database.COLUMN_APTO_FISICO, textoSeleccionadoApto == "Sí") //Lo combierte a boolean
                 put(Database.COLUMN_TIPO_CLIENTE, radioButtonSeleccionado.text.toString())
-                put(Database.COLUMN_NRO_AVATAR, 1)
+                put(Database.COLUMN_NRO_AVATAR, 0)
             }
 
 // Insertar los datos en la tabla Clientes

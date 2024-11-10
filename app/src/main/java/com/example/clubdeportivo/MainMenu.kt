@@ -4,15 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.clubdeportivo.Utils.UserAvatar
+import com.example.clubdeportivo.Utils.User
 import com.example.clubdeportivo.Utils.Utils
 import com.example.clubdeportivo.database.Database
 
@@ -33,8 +30,16 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
         val buttonUsu = findViewById<Button>(R.id.btn_register_user)
         val buttonPago = findViewById<Button>(R.id.btn_payment)
         val buttonSalir = findViewById<Button>(R.id.btn_exit)
-        val buttonReCliente = findViewById<Button>(R.id.btn_customers_report)
+
+        val buttonReCliente = findViewById<Button>(R.id.btn_all_customers)
+        val buttonOverdue = findViewById<Button>(R.id.btn_overdue)
+        val buttonToOverdue = findViewById<Button>(R.id.btn_to_overdue)
+        val buttonOverdueToday = findViewById<Button>(R.id.btn_overdue_today)
+
+
+
         val btnCarnet = findViewById<Button>(R.id.btn_emmit_card)
+
         buttonUsu.setOnClickListener {
             Utils.cambioPantalla(this,MainCliente::class.java)
         }
@@ -48,7 +53,24 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
             Utils.cambioPantalla(this,MainActivity::class.java)
         }
         buttonReCliente.setOnClickListener{
-            Utils.cambioPantalla(this,CustomersRegister::class.java)
+            val intent = Intent(this, CustomersRegister::class.java)
+            intent.putExtra("QUERY", "ALL")
+            startActivity(intent)
+        }
+        buttonToOverdue.setOnClickListener{
+            val intent = Intent(this, CustomersRegister::class.java)
+            intent.putExtra("QUERY", "TOOVERDUE")
+            startActivity(intent)
+        }
+        buttonOverdue.setOnClickListener{
+            val intent = Intent(this, CustomersRegister::class.java)
+            intent.putExtra("QUERY", "OVERDUE")
+            startActivity(intent)
+        }
+        buttonOverdueToday.setOnClickListener{
+            val intent = Intent(this, CustomersRegister::class.java)
+            intent.putExtra("QUERY", "OVERDUETODAY")
+            startActivity(intent)
         }
         btnCarnet.setOnClickListener{
             val intent = Intent(this, BuscarCliente::class.java)
@@ -60,14 +82,13 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
 
     override fun onResume() {
         super.onResume()
-        if(UserAvatar.changeAvatar()){
+        this.getUserInfo()
         this.showAvatar()
-        }
     }
 
     @SuppressLint("DiscouragedApi")
     private fun showAvatar(){
-        this.nroAvatar = UserAvatar.getAvatar()
+        this.nroAvatar = User.avatar
 
         val addIcon = findViewById<ImageView>(R.id.addIcon)
         val profileImage = findViewById<ImageView>(R.id.profilePhoto)
@@ -80,6 +101,7 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
             addIcon.setOnClickListener{
                 val intent = Intent(this, AvatarSelect::class.java)
                 intent.putExtra("USER_EMAIL", this.userEmail)
+                intent.putExtra("COLUMN", "usuario")
                 intent.putExtra("TABLE", Database.TABLE_USERS)
                 startActivity(intent)
             }
@@ -91,8 +113,8 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
 
     private fun getUserInfo(){
 
-            this.userName = intent.getStringExtra("USER_NAME") ?: "Nombre no disponible"
-            this.userEmail = intent.getStringExtra("USER_EMAIL") ?: "Email no disponible"
+            this.userName = User.name
+            this.userEmail = User.email
 
 
         val nameTextView = findViewById<TextView>(R.id.txt_user_name)

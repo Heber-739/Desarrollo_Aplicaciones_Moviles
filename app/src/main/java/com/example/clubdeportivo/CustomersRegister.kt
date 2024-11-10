@@ -1,5 +1,6 @@
 package com.example.clubdeportivo
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -11,13 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.clubdeportivo.Utils.ClienteAdapter
 import com.example.clubdeportivo.Utils.Clientes_mostrar
 import com.example.clubdeportivo.Utils.Utils
+import com.example.clubdeportivo.database.Database
+import com.example.clubdeportivo.models.Cliente
+import java.text.SimpleDateFormat
 import java.util.Date
 
-class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListener {
+class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListener, ModalFragment.ModalListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_customers_register)
+        val param = intent.getStringExtra("QUERY").toString()
+        this.mostrarClientes(param);
+
+
+
         val btnHome= findViewById<Button>(R.id.btn_nav_home)
         val btnRegis = findViewById<Button>(R.id.btn_nav_register)
         val btnCuot = findViewById<Button>(R.id.btn_nav_payment)
@@ -40,22 +49,6 @@ class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListene
             Utils.cambioPantalla(this, CustomersRegister::class.java)
         }
 
-        /* Listar los clientes */
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        // Lista de clientes a mostrar
-        val cliente1 = Clientes_mostrar(3423 ,"heber duarte", 1 , Date())
-        val cliente2 = Clientes_mostrar(3421 ,"Cristian Orihuela", 5 , Date())
-        val cliente3 = Clientes_mostrar(3420 ,"Mica orellano", 15 , Date())
-
-        val clientes = listOf(cliente1, cliente2, cliente3)
-
-        // Configura el adapter para el RecyclerView
-        val adapter = ClienteAdapter(clientes,this)
-        recyclerView.adapter = adapter
-
-
         val btnRegresar = findViewById<Button>(R.id.btn_back)
         btnRegresar.setOnClickListener{
             Utils.cambioPantalla(this, MainMenu::class.java)
@@ -64,11 +57,84 @@ class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListene
 
     }
 
-    override fun onItemClick(id: Int) {
+    private fun mostrarClientes(tipo: String){
+        val today = SimpleDateFormat("yyyy-MM-dd").format(Date())
+        val dbHelper = Database(this)
+        val db = dbHelper.readableDatabase
+        val clientes = mutableListOf<Clientes_mostrar>()
+
+        val query = when (tipo) {
+            "ALL" -> "SELECT * FROM ${Database.TABLE_CLIENTES}"
+            "OVERDUE" -> "SELECT * FROM ${Database.TABLE_CLIENTES} WHERE fecha_venc_pago < ?"
+            "TOOVERDUE" -> "SELECT * FROM ${Database.TABLE_CLIENTES} WHERE fecha_venc_pago > ?"
+            "OVERDUETODAY" -> "SELECT * FROM ${Database.TABLE_CLIENTES} WHERE fecha_venc_pago = ?"
+            else -> "SELECT * FROM ${Database.TABLE_CLIENTES}"
+        }
+
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        try {
+
+
+        val cursor = if (tipo == "ALL") {
+            db.rawQuery(query, null)
+        } else {
+            db.rawQuery(query, arrayOf(today))
+        }
+
+        if (cursor.moveToFirst()) {
+            do {
+                val nombre =
+                    cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_NOMBRE_CLIENTE))
+                val email =
+                    cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMAIL_CLIENTE))
+                val fechaVencPago =
+                    cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_FECHA_VENC_PAGO))
+                val nroAvatar =
+                    cursor.getInt(cursor.getColumnIndexOrThrow(Database.COLUMN_NRO_AVATAR))
+
+                val cliente = Clientes_mostrar(
+                    email,
+                    nombre,
+                    nroAvatar,
+                    fechaVencPago
+                )
+                clientes.add(cliente)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        // Configura el adapter para el RecyclerView
+        val adapter = ClienteAdapter(clientes,this)
+        recyclerView.adapter = adapter
+
+        } catch (e:Exception){
+            val modal = ModalFragment.newInstance("No se puede visualizar elementos",
+                "Error:  ${e.message}", "OK", )
+            modal.show(supportFragmentManager, "ModalFragment")
+        }
+
+    }
+
+    override fun onItemClick(email: String) {
         // Usar el ID del elemento clicado
-        Toast.makeText(this, "ID del elemento clicado: $id", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "ID del elemento clicado: $email", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(this, AvatarSelect::class.java)
+        intent.putExtra("USER_EMAIL", email)
+        intent.putExtra("TABLE", Database.TABLE_CLIENTES)
+        intent.putExtra("COLUMN", "cliente")
+        startActivity(intent)
+
 
         // Aquí puedes realizar cualquier operación con el ID
         // Ejemplo: buscar en la base de datos usando el ID, etc.
+    }
+
+    override fun onModalResult(success: Boolean) {
+        TODO("Not yet implemented")
     }
 }
