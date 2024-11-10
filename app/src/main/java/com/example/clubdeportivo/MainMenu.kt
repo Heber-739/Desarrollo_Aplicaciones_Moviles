@@ -39,9 +39,8 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
             Utils.cambioPantalla(this,MainCliente::class.java)
         }
         buttonPago.setOnClickListener {
-            //Utils.cambioPantalla(this,BuscarCliente::class.java)
             val intent = Intent(this, BuscarCliente::class.java)
-            intent.putExtra("PROCESO", "pago")  // Pasa el nombre del usuario
+            intent.putExtra("PROCESO", "pago")
             startActivity(intent)
 
         }
@@ -52,7 +51,10 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
             Utils.cambioPantalla(this,CustomersRegister::class.java)
         }
         btnCarnet.setOnClickListener{
-            Utils.cambioPantalla(this, CustomerCard::class.java)
+            val intent = Intent(this, BuscarCliente::class.java)
+            intent.putExtra("PROCESO", "carnet")
+            startActivity(intent)
+
         }
     }
 
