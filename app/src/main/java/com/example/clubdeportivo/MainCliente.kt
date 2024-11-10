@@ -69,6 +69,15 @@ class MainCliente : AppCompatActivity(), ModalFragment.ModalListener{
                 return@setOnClickListener
             }
 
+            else if (estaElClienteRegistrado(dni)){
+                val modalFragmentDniExistente = ModalFragment.newInstance(
+                    title = "Atencion!",
+                    text = "El DNI ya está registrado en el sistema.",
+                    btnSuccess = "Aceptar"
+                )
+                modalFragmentDniExistente.show(supportFragmentManager, "ModalFragmentDniExistente")
+                return@setOnClickListener
+            }
 
             if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 val modalFragmentEmail = ModalFragment.newInstance(
@@ -146,10 +155,6 @@ class MainCliente : AppCompatActivity(), ModalFragment.ModalListener{
                 )
                 modalFragmentError.show(supportFragmentManager, "ModalFragmentError")
             }
-
-            //transfiere los datos a las pantallas socio o no socios
-
-
         }
         //menu inferior
         button1.setOnClickListener {
@@ -171,5 +176,20 @@ class MainCliente : AppCompatActivity(), ModalFragment.ModalListener{
     }
     override fun onModalResult(success: Boolean) {
         shouldNavigate = success
+    }
+
+    private fun estaElClienteRegistrado(dni: String): Boolean {
+        val dniInt = dni.toIntOrNull()
+        if (dniInt == null) return false
+
+        val dbHelper = Database(this)
+        val db = dbHelper.readableDatabase
+        val query = "SELECT 1 FROM ${Database.TABLE_CLIENTES} WHERE ${Database.COLUMN_CLIENTE_DNI} = ?"
+        val cursor = db.rawQuery(query, arrayOf(dniInt.toString()))
+
+        val existe = cursor.moveToFirst()
+        cursor.close()
+        db.close()
+        return existe
     }
 }
