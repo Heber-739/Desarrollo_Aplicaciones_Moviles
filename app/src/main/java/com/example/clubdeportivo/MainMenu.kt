@@ -101,6 +101,7 @@ class MainMenu : AppCompatActivity(), ModalFragment.ModalListener {
             addIcon.setOnClickListener{
                 val intent = Intent(this, AvatarSelect::class.java)
                 intent.putExtra("USER_EMAIL", this.userEmail)
+                intent.putExtra("COLUMN", "usuario")
                 intent.putExtra("TABLE", Database.TABLE_USERS)
                 startActivity(intent)
             }

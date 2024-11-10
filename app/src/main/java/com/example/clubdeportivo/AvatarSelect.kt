@@ -14,12 +14,14 @@ import com.example.clubdeportivo.database.Database
 class AvatarSelect: AppCompatActivity(), AvatarAdapter.OnAvatarClickListener, ModalFragment.ModalListener  {
 
     private var email:String = ""
+    private var column:String = ""
     private var table:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         this.email = intent.getStringExtra("USER_EMAIL").toString()
+        this.column = intent.getStringExtra("COLUMN").toString()
         this.table = intent.getStringExtra("TABLE").toString()
 
         // Configura el layout de la actividad
@@ -44,14 +46,21 @@ class AvatarSelect: AppCompatActivity(), AvatarAdapter.OnAvatarClickListener, Mo
         val db = dbHelper.writableDatabase
 
         try {
+            var updateQuery = "";
+            if(this.column == "usuario"){
+                updateQuery = "UPDATE ${this.table} SET nro_avatar = ? WHERE email_usuario = ?"
+            } else {
+                updateQuery = "UPDATE ${this.table} SET nro_avatar = ? WHERE email_cliente = ?"
+            }
 
-    val updateQuery = "UPDATE ${this.table} SET nro_avatar = ? WHERE email_usuario = ?"
     val stmt = db.compileStatement(updateQuery)
     stmt.bindLong(1, id.toLong())
     stmt.bindString(2, this.email)
     stmt.executeUpdateDelete()
             stmt.close()
-    User.avatar = id
+            if(this.column == "usuario"){
+                User.avatar = id
+            }
             val intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
 

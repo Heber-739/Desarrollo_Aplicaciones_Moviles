@@ -1,5 +1,6 @@
 package com.example.clubdeportivo
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -84,16 +85,17 @@ class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListene
 
         if (cursor.moveToFirst()) {
             do {
-                val dni = cursor.getInt(cursor.getColumnIndexOrThrow(Database.COLUMN_CLIENTE_DNI))
                 val nombre =
                     cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_NOMBRE_CLIENTE))
+                val email =
+                    cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMAIL_CLIENTE))
                 val fechaVencPago =
                     cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_FECHA_VENC_PAGO))
                 val nroAvatar =
                     cursor.getInt(cursor.getColumnIndexOrThrow(Database.COLUMN_NRO_AVATAR))
 
                 val cliente = Clientes_mostrar(
-                    dni,
+                    email,
                     nombre,
                     nroAvatar,
                     fechaVencPago
@@ -117,9 +119,16 @@ class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListene
 
     }
 
-    override fun onItemClick(id: Int) {
+    override fun onItemClick(email: String) {
         // Usar el ID del elemento clicado
-        Toast.makeText(this, "ID del elemento clicado: $id", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "ID del elemento clicado: $email", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(this, AvatarSelect::class.java)
+        intent.putExtra("USER_EMAIL", email)
+        intent.putExtra("TABLE", Database.TABLE_CLIENTES)
+        intent.putExtra("COLUMN", "cliente")
+        startActivity(intent)
+
 
         // Aquí puedes realizar cualquier operación con el ID
         // Ejemplo: buscar en la base de datos usando el ID, etc.
