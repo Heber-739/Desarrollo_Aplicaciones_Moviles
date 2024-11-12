@@ -22,12 +22,15 @@ class ClienteAdapter(private val clientes: List<Clientes_mostrar>, private val l
     class ClienteViewHolder(itemView: View, private val listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val txtName: TextView = itemView.findViewById(R.id.txt_names)
         val profilePhoto: ImageView = itemView.findViewById(R.id.profilePhoto)
+        val txt_date: TextView = itemView.findViewById(R.id.txt_date)
 
         fun bind(cliente: Clientes_mostrar) {
             txtName.text = cliente.names
+            txt_date.text = cliente.date
             val nombreImagen = "avatar_" + cliente.avatar.toString()
             val resourceId = itemView.context.resources.getIdentifier(nombreImagen, "drawable", itemView.context.packageName)
             profilePhoto.setImageResource(if (resourceId != 0) resourceId else R.drawable.avatar_0)
+
 
             // Asigna el listener al itemView y pasa el ID único del cliente
             itemView.setOnClickListener {

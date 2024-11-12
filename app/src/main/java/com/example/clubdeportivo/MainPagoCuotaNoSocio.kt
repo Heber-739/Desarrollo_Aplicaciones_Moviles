@@ -125,11 +125,11 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                         }
 
                         val dateFormat =
-                            java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                            java.text.SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                         val fechaVencimiento = dateFormat.format(calendar.time)
                         fechaVencimientoFinal = fechaVencimiento
 
-                        val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                        val formatoFecha = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                         val fechaActualFormateada = formatoFecha.format(fechaActual)
 
                         // Inserta en la base de datos
@@ -138,7 +138,7 @@ class MainPagoCuotaNoSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                             precioTotal,
                             metodoPago,
                             fechaActualFormateada,
-                            fechaVencimiento
+                            fechaVencimientoFinal
                         )
 
                         val modalFragment = ModalFragment.newInstance(

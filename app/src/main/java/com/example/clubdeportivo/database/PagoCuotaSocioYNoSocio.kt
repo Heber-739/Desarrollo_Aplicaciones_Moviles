@@ -8,12 +8,15 @@ import com.example.clubdeportivo.database.Database.Companion.COLUMN_METODO_PAGO
 import com.example.clubdeportivo.database.Database.Companion.COLUMN_MONTO_PAGO
 import com.example.clubdeportivo.database.Database.Companion.COLUMN_VENC_PAGO
 import com.example.clubdeportivo.database.Database.Companion.TABLE_PAGO
+import java.text.SimpleDateFormat
+import java.util.Date
 
 class PagoCuotaSocioYNoSocio (context: Context) {
     private val dbHelper = Database(context)
 
     // Método para registrar un pago
     fun registrarPago(dniCliente: Int, monto: Double, metodoPago: String, fechaPago: String, vencimiento: String): String {
+
         val db = dbHelper.writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_CLIENTE_DNI_FK, dniCliente)
