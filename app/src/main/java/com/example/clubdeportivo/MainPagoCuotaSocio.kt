@@ -96,11 +96,11 @@ class MainPagoCuotaSocio : AppCompatActivity(),  ModalFragment.ModalListener {
                     add(Calendar.DAY_OF_YEAR, 30)
                 }
 
-                val dateFormat = java.text.SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val dateFormat = java.text.SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                 val fechaVencimiento = dateFormat.format(calendar.time)
                 fechaVencimientoFinal= fechaVencimiento
 
-                val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val formatoFecha = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
                 val fechaActualFormateada = formatoFecha.format(fechaActual)
 
                 // Inserta en la base de datos

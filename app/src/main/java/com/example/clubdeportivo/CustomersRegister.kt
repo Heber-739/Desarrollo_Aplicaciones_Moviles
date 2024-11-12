@@ -16,6 +16,7 @@ import com.example.clubdeportivo.database.Database
 import com.example.clubdeportivo.models.Cliente
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.TimeZone
 
 class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListener, ModalFragment.ModalListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,30 +59,61 @@ class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListene
     }
 
     private fun mostrarClientes(tipo: String){
-        val today = SimpleDateFormat("yyyy-MM-dd").format(Date())
+        val timeZone = TimeZone.getTimeZone("America/Argentina/Buenos_Aires")
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy")
+        dateFormat.timeZone = timeZone
+        val today = dateFormat.format(Date())
+
         val dbHelper = Database(this)
         val db = dbHelper.readableDatabase
         val clientes = mutableListOf<Clientes_mostrar>()
 
+        val all = "SELECT c.nombre_cliente, c.email_cliente, p.venc_pago, c.nro_avatar FROM " +
+                "${Database.TABLE_CLIENTES} AS C INNER JOIN ${Database.TABLE_PAGO} AS P ON C.dni = P.cliente_dni " +
+                "WHERE p.venc_pago = ( SELECT MAX(P2.venc_pago) FROM ${Database.TABLE_PAGO} AS P2 " +
+                "WHERE P2.cliente_dni = C.dni );"
+
+        val queryOverdue =
+            "SELECT c.nombre_cliente, c.email_cliente, p.venc_pago, c.nro_avatar FROM " +
+                    "${Database.TABLE_CLIENTES} AS C INNER JOIN ${Database.TABLE_PAGO} AS P ON C.dni = P.cliente_dni " +
+                    "WHERE p.venc_pago = ( SELECT MAX(P2.venc_pago) FROM ${Database.TABLE_PAGO} AS P2 " +
+                    "WHERE P2.cliente_dni = C.dni ) AND P.venc_pago < ?;"
+
+        val queryTooverdue =
+            "SELECT c.nombre_cliente, c.email_cliente, p.venc_pago, c.nro_avatar FROM " +
+                    "${Database.TABLE_CLIENTES} AS C INNER JOIN ${Database.TABLE_PAGO} AS P ON C.dni = P.cliente_dni " +
+                    "WHERE p.venc_pago = ( SELECT MAX(P2.venc_pago) FROM ${Database.TABLE_PAGO} AS P2 " +
+                    "WHERE P2.cliente_dni = C.dni ) AND P.venc_pago > ?;"
+
+        val queryOverdueToday =
+            "SELECT c.nombre_cliente, c.email_cliente, p.venc_pago, c.nro_avatar FROM " +
+                    "${Database.TABLE_CLIENTES} AS C INNER JOIN ${Database.TABLE_PAGO} AS P ON C.dni = P.cliente_dni " +
+                    "WHERE p.venc_pago = ( SELECT MAX(P2.venc_pago) FROM ${Database.TABLE_PAGO} AS P2 " +
+                    "WHERE P2.cliente_dni = C.dni ) AND p.venc_pago = ?;"
+
         val query = when (tipo) {
-            "ALL" -> "SELECT * FROM ${Database.TABLE_CLIENTES}"
-            "OVERDUE" -> "SELECT * FROM ${Database.TABLE_CLIENTES} WHERE fecha_venc_pago < ?"
-            "TOOVERDUE" -> "SELECT * FROM ${Database.TABLE_CLIENTES} WHERE fecha_venc_pago > ?"
-            "OVERDUETODAY" -> "SELECT * FROM ${Database.TABLE_CLIENTES} WHERE fecha_venc_pago = ?"
-            else -> "SELECT * FROM ${Database.TABLE_CLIENTES}"
+            "ALL" -> all
+            "OVERDUE" -> queryOverdue
+            "TOOVERDUE" -> queryTooverdue
+            "OVERDUETODAY" -> queryOverdueToday
+
+
+
+            else -> all
+
         }
+
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         try {
 
-
-        val cursor = if (tipo == "ALL") {
-            db.rawQuery(query, null)
-        } else {
-            db.rawQuery(query, arrayOf(today))
-        }
+            val cursor = if (tipo == "ALL") {
+                db.rawQuery(query, null)
+            } else {
+                db.rawQuery(query, arrayOf(today))
+            }
 
         if (cursor.moveToFirst()) {
             do {
@@ -90,7 +122,7 @@ class CustomersRegister : AppCompatActivity(), ClienteAdapter.OnItemClickListene
                 val email =
                     cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_EMAIL_CLIENTE))
                 val fechaVencPago =
-                    cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_FECHA_VENC_PAGO))
+                    cursor.getString(cursor.getColumnIndexOrThrow(Database.COLUMN_VENC_PAGO))
                 val nroAvatar =
                     cursor.getInt(cursor.getColumnIndexOrThrow(Database.COLUMN_NRO_AVATAR))
 
